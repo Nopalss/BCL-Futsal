@@ -50,8 +50,10 @@ class Auth extends CI_Controller{
                         redirect('owner'); // panggil class owner / diizinkan masuk
                     }elseif($user['roll_id'] == 2){ // jika admin 
                         redirect('admin'); // panggil class admin / diizinkan masuk
+                    }elseif($user['roll_id'] == 3){ // jika admin 
+                        redirect('user'); // panggil class admin / diizinkan masuk
                     }else{
-                        redirect('user');// user
+                        redirect('auth');// user
                     }
                 }else{
                     $this->session->set_flashdata('message', '<div class="alert alert-danger alert-message" role="alert">Wrong password!</div>');

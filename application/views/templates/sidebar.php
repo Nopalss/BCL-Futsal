@@ -10,6 +10,18 @@
            </a>
 
            <!-- Divider -->
+           <li class="nav-item">
+               <a class="nav-link" href="<?= base_url('admin') ?>">
+                   <i class="fas fa-book fa-fw"></i>
+                   <span>My Profile</span>
+               </a>
+           </li>
+           <li class="nav-item">
+               <a class="nav-link" href="<?= base_url('admin/booking') ?>">
+                   <i class="fas fa-book fa-fw"></i>
+                   <span>Booking</span>
+               </a>
+           </li>
            <hr class="sidebar-divider">
 
            <li class="nav-item">

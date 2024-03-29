@@ -1,3 +1,4 @@
+</div>
  <!-- Footer -->
  <footer class="sticky-footer bg-white">
      <div class="container my-auto">
@@ -49,7 +50,39 @@
  <!-- Custom scripts for all pages-->
  <script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
 
- 
+ <script type="text/javascript">
+    //  $(document).ready(function() {
+    //             $('#id_lapangan').change(function() {
+    //                 const id_lapangan = $(this).val();
+    //                 console.log(id_lapangan);
+    //                 $.ajax({
+    //                     url: "<?= base_url('booking/lapangan_list'); ?>",
+    //                     type: "POST",
+    //                     data: {
+    //                         idLapangan: id_lapangan
+    //                     },
+    //                     async: true,
+    //                     dataType: 'json',
+    //                     success: function(data) {
+    //                         $('#harga').val(data.harga);
+    //                         console.log(data.harga)
+    //                     }
+    //                 });
+    //             });
+    //         });
+    $('#id_lapangan').change(function() {
+        var idLapangan = $("#id_lapangan").val();
+        console.log(idLapangan)
+        $.ajax({
+            url: '<?= base_url('booking/lapangan_list')?>',
+            data: 'id_lapangan='+idLapangan,
+            success: function(data){
+            console.log(data.harga);
+            $('#harga').val(data.harga);
+            }
+        })
+    });
+ </script>
  </body>
 
  </html>
