@@ -1,13 +1,13 @@
-<div class="mt-5 container-fluid">
+<div class="container-fluid ">
 
-    <div class="mt-5 container-fluid text-center col-lg-6 bg-white shadow-lg rounded pb-4">
+    <div class="margin container-fluid text-center col-lg-6 bg-white shadow-lg rounded pb-4">
         <img src="<?= base_url('assets/img/profile/') . $user['image'] ?>" alt="<?= $user['image'] ?>" class="img-profile img-fluid rounded-circle shadow-lg atas" style="width: 9em;">
         <?php if(validation_errors()): ?>
             <div class="alert alert-danger alert-message" role="alert">
                 <?= validation_errors(); ?>
             </div>
             <?php else:  ?>
-                <?= $this->session->flashdata('message'); ?>
+                <?= $this->session->flashdata('edit'); ?>
             <?php endif ?>
         <div class="table-responsive">
             <table class="table table-hover text-center mt-3 mx-auto">
@@ -15,7 +15,6 @@
                     <th>Nama</th>
                     <td><?= $user['name']; ?></td>
                 </tr>
-
                 <tr>
                     <th>Email</th>
                     <td><?= $user['email']; ?></td>
@@ -35,12 +34,12 @@
         <button type="button" class="btn btn-warning mt-3" data-toggle="modal" data-target="#editProfileModal">Edit Porfile</button>
     </div>
     <!-- edit profile modal -->
-    <div class="modal fade mt-5" id="editProfileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header bg-gradient-info text-white">
                     <h5 class="modal-title" id="editppModal">Edit Profile</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -56,17 +55,14 @@
                     </div>
                     <div class="form-group">
                                 <label>Foto</label>
-
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="foto" name="image" value="<?= $user['image']?>">
                                 <label class="custom-file-label" for="foto">Choose file</label>
                             </div>
-                        
-
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Edit</button>
 
                 </div>

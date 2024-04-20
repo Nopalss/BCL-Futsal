@@ -1,9 +1,9 @@
 </div>
 <!-- Footer -->
-<footer class="sticky-footer bg-white">
+<footer class="sticky-footer bg-white shadow-lg">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website <?= date('Y'); ?></span>
+            <span>Copyright &copy; BCL Futsal <?= date('Y'); ?></span>
         </div>
     </div>
 </footer>
@@ -16,7 +16,7 @@
 <!-- End of Page Wrapper -->
 
 <!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
+<a class="scroll-to-top rounded" href="#">
     <i class="fas fa-angle-up"></i>
 </a>
 
@@ -38,6 +38,8 @@
         </div>
     </div>
 </div>
+<!-- hapus booking ml\odal -->
+
 
 
 
@@ -51,6 +53,13 @@
 
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
+
+<script src="<?= base_url('assets/'); ?>vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= base_url('assets/'); ?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="<?= base_url('assets/'); ?>js/demo/datatables-demo.js"></script>
+
 
 <script>
     $('.custom-file-input').on('change', function(){
@@ -78,19 +87,64 @@
     //                 });
     //             });
     //         });
-    
-    $('#id_lapangan').change(function() {
-        var idLapangan = $("#id_lapangan").val();
-        console.log(idLapangan)
+    function pilih_lapangan(){
+        var id_lapangan = $("#id_lapangan").val();
+        console.log(id_lapangan);
         $.ajax({
-            url: '<?= base_url('booking/lapangan_list') ?>',
-            data: 'id_lapangan=' + idLapangan,
-            success: function(data) {
-                console.log(data.harga);
-                $('#harga').val(data.harga);
+            url: "<?= base_url('admin/lapangan_list')?>",
+            data:"id_lapangan="+ id_lapangan,
+            method: 'post',
+            async: true,
+            dataType: 'json',
+            success: function(data){
+                $("#harga").val(data.harga);
             }
         })
-    });
+    }
+    function pilih_booking(){
+        var id_booking = $("#id_booking").val();
+        // console.log(id_lapangan);
+        $.ajax({
+            url: "<?= base_url('admin/get_booking')?>",
+            data:"id_booking="+ id_booking,
+            method: 'post',
+            async: true,
+            dataType: 'json',
+            success: function(data){
+                $("#total").val(data.harga);
+                $("#tanggal").val(data.tanggal);
+            }
+        })
+    }
+    function pilih_laporan(){
+        var tanggal = $("#tanggal").val();
+        // console.log(id_lapangan);
+        $.ajax({
+            url: "<?= base_url('admin/get_laporan')?>",
+            data:"tanggal="+ tanggal,
+            method: 'post',
+            async: true,
+            dataType: 'json',
+            success: function(data){
+                $("#pendapatan").val(data.pendapatan);
+            }
+        })
+    }
+    // function pilih_jam(){
+    //     var id_jam = $("#id_jam").val();
+    //     console.log(id_jam);
+    //     $.ajax({
+    //         url: "<?= base_url('admin/jam_list')?>",
+    //         data:"id_jam="+ id_jam,
+    //         method: 'post',
+    //         dataType: 'json',
+    //         success: function(data){
+    //             $("#jam_mulai").val(data.jam);
+    //         }
+    //     })
+    // }
+
+  
 </script>
 
 </body>
