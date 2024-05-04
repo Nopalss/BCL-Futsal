@@ -2,7 +2,7 @@
        <ul class="navbar-nav bg-biru sidebar sidebar-dark accordion shadow animated--fade-in" id="accordionSidebar">
 
            <!-- Sidebar - Brand -->
-           <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+           <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                <div class="sidebar-brand-icon rotate-n-15">
                    <i class="fas fa-futbol text-gold"></i>
                </div>
@@ -19,27 +19,33 @@
            </li>
            <li class="nav-item">
                <a class="nav-link pb-0" href="<?= base_url('admin/changepassword') ?>">
-                   <i class="fas fa-book fa-fw text-warning"></i>
-                   <span>Change Password</span>
+               <i class="fas fa-lock fa-fw text-warning"></i>
+               <span>Change Password</span>
                </a>
            </li>
            <li class="nav-item ">
-               <a class="nav-link pb-0" href="<?= base_url('admin/booking') ?>">
+               <a class="nav-link pb-0" href="<?= base_url('booking') ?>">
                    <i class="fas fa-calendar-alt fa-fw text-warning"></i>
                    <span>Booking</span>
                </a>
            </li>
            <li class="nav-item ">
-               <a class="nav-link pb-0" href="<?= base_url('admin/transaksi') ?>">
+               <a class="nav-link pb-0" href="<?= base_url('transaksi') ?>">
                <i class="fas fa-money-bill-wave fa-fw text-warning"></i>
                 <span>Transaksi</span>
                </a>
 
            </li>
            <li class="nav-item ">
-               <a class="nav-link pb-0" href="<?= base_url('admin/LaporanHarian') ?>">
-                   <i class="fas fa-file-invoice-dollar fa-fw text-warning"></i>
+               <a class="nav-link pb-0" href="<?= base_url('laporan/LaporanHarian') ?>">
+                    <i class="fas fa-file-invoice fa-fw text-warning"></i>
                    <span>Laporan Harian</span>
+               </a>
+           </li>
+           <li class="nav-item ">
+               <a class="nav-link pb-0" href="<?= base_url('laporan/LaporanBulanan') ?>">
+                   <i class="fas fa-file-invoice-dollar fa-fw text-warning"></i>
+                   <span>Laporan Bulanan</span>
                </a>
            </li>
 

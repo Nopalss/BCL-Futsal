@@ -7,7 +7,7 @@
       </div>
       <div class="card-body">
       <?= $this->session->flashdata('message'); ?>
-        <form action="<?= base_url('admin/tambahbooking') ?> " method="post">
+        <form action="<?= base_url('booking/tambahBooking') ?> " method="post">
           <div class="form-group">
             <label for="tanggal"><b>Tanggal</b></label>
             <input type="input" id="tanggal" class="form-control" name="tanggal" value="<?= $this->session->userdata('tanggal') ?>" readonly>
@@ -396,7 +396,7 @@
           </div>
        
           <div class="card-footer bg-white text-right">
-            <a href="<?= base_url('Admin/booking') ?>" class="btn btn-danger">Batal</a>
+            <a href="<?= base_url('booking/jadwalBooking') ?>" class="btn btn-danger">Batal</a>
             <button type="submit" class="btn btn-primary">Simpan</button>
           </div>
         </form>

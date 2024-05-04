@@ -61,8 +61,11 @@
 <script src="<?= base_url('assets/'); ?>js/demo/datatables-demo.js"></script>
 
 
+<!-- Page level custom scripts -->
+
+
 <script>
-    $('.custom-file-input').on('change', function(){
+    $('.custom-file-input').on('change', function() {
         let fileName = $(this).val().split('\\').pop();
         $(this).next('.custom-file-label').addClass("selected").html(fileName);
     });
@@ -87,45 +90,47 @@
     //                 });
     //             });
     //         });
-    function pilih_lapangan(){
+    function pilih_lapangan() {
         var id_lapangan = $("#id_lapangan").val();
         console.log(id_lapangan);
         $.ajax({
-            url: "<?= base_url('admin/lapangan_list')?>",
-            data:"id_lapangan="+ id_lapangan,
+            url: "<?= base_url('booking/lapangan_list') ?>",
+            data: "id_lapangan=" + id_lapangan,
             method: 'post',
             async: true,
             dataType: 'json',
-            success: function(data){
+            success: function(data) {
                 $("#harga").val(data.harga);
             }
         })
     }
-    function pilih_booking(){
+
+    function pilih_booking() {
         var id_booking = $("#id_booking").val();
         // console.log(id_lapangan);
         $.ajax({
-            url: "<?= base_url('admin/get_booking')?>",
-            data:"id_booking="+ id_booking,
+            url: "<?= base_url('booking/get_booking') ?>",
+            data: "id_booking=" + id_booking,
             method: 'post',
             async: true,
             dataType: 'json',
-            success: function(data){
+            success: function(data) {
                 $("#total").val(data.harga);
                 $("#tanggal").val(data.tanggal);
             }
         })
     }
-    function pilih_laporan(){
+
+    function pilih_laporan() {
         var tanggal = $("#tanggal").val();
         // console.log(id_lapangan);
         $.ajax({
-            url: "<?= base_url('admin/get_laporan')?>",
-            data:"tanggal="+ tanggal,
+            url: "<?= base_url('laporan/get_laporan') ?>",
+            data: "tanggal=" + tanggal,
             method: 'post',
             async: true,
             dataType: 'json',
-            success: function(data){
+            success: function(data) {
                 $("#pendapatan").val(data.pendapatan);
             }
         })
@@ -134,7 +139,7 @@
     //     var id_jam = $("#id_jam").val();
     //     console.log(id_jam);
     //     $.ajax({
-    //         url: "<?= base_url('admin/jam_list')?>",
+    //         url: "<?= base_url('admin/jam_list') ?>",
     //         data:"id_jam="+ id_jam,
     //         method: 'post',
     //         dataType: 'json',
@@ -143,9 +148,8 @@
     //         }
     //     })
     // }
-
-  
 </script>
+
 
 </body>
 

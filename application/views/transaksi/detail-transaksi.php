@@ -49,11 +49,11 @@
                 </div>
                 <div class="card-footer d-flex justify-content-around" style="font-weight: bold;">
                     <p>Total</p>
-                    <p>Rp <?= $transaksi['total']; ?></p>
+                    <p class="btn btn-success"><?= "Rp " . number_format($transaksi['total'],2,',','.') ?></p>
                 </div>
             </div>
-            <a href="<?= base_url('admin/transaksi')?>" class="btn btn-info col-md-1 mt-2"><i class="fas fa-arrow-left"></i></a>
-            <a href="<?= base_url('admin/printTransaksi/'). $transaksi['nota']; ?>" class="btn btn-danger col-md-1 mt-2"><i class="fas fa-print"></i></a>
+            <a href="<?= base_url('transaksi')?>" class="btn btn-info col-md-1 mt-2"><i class="fas fa-arrow-left"></i></a>
+            <a href="<?= base_url('transaksi/printTransaksi/'). $transaksi['nota']; ?>" class="btn btn-danger col-md-1 mt-2"><i class="fas fa-print"></i></a>
         </div>
     </div>
 </div>

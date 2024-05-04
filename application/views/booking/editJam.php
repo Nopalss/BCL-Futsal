@@ -9,15 +9,15 @@
       
       <div class="card-body">
         <?= $this->session->flashdata('message'); ?>
-        <form action="<?= base_url('booking/jadwalBooking') ?> " method="post">
+        <form action="<?= base_url('booking/edit') ?> " method="post">
           <div class="form-group">
             <label for="tanggal"><b>Tanggal</b></label>
-            <input type="date" id="tanggal" class="form-control" name="tanggal" onchange="pilih_tanggal()">
+            <input type="date" id="tanggal" class="form-control" name="tanggal" value="<?= $booking['tanggal']?>">
             <?= form_error('tanggal', '<small class="text-danger pl-3">', '</small>'); ?>
           </div>
           <div class="form-group">
             <label for="id_lapangan"><b>Jenis Lapangan</b></label>
-            <select id="id_lapangan" class="form-control" name="id_lapangan" >
+            <select id="id_lapangan" class="form-control" name="id_lapangan">
               <option value="">Pilih Jenis Lapangan</option>
               <?php foreach ($lapangan as $lp) : ?>
                 <option value="<?= $lp['id'] ?>"><?= $lp['jenis_lapangan'] ?></option>

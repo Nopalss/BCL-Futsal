@@ -5,9 +5,9 @@
                 <h3><?= $title; ?></h3>
             </div>
             <div class="card-body">
-                <a href="<?= base_url('admin/jadwal_booking') ?>" class="btn btn-success mb-3"><i class="fas fa-fw fa-plus"></i> Tambah</a>
+                <a href="<?= base_url('booking/jadwalBooking') ?>" class="btn btn-success mb-3"><i class="fas fa-fw fa-plus"></i> Tambah</a>
                 <div class="table-responsive-lg">
-                    <table class="table table-hover" id="dataTable"  cellspacing="0">
+                    <table class="table table-hover " id="dataTable"  cellspacing="0">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -36,10 +36,10 @@
                                     <td><a href="#" class="btn btn-success"><?= $b['status']; ?></a></td>
                                     <?php endif; ?>
                                     <td>
-                                        <a href="<?= base_url('admin/detail_booking/') . $b['id'] ?>" class="btn btn-info btn-circle"><i class="fas fa-fw fa-eye"></i></a>
-                                        <a href="<?= base_url('admin/hapus_booking/') . $b['id'] ?>" class="btn btn-danger btn-circle" onclick="hapus(<?= $b['id'] ?>)"><i class="fas fa-fw fa-trash"></i></a>
+                                        <a href="<?= base_url('booking/detailBooking/') . $b['id'] ?>" class="btn btn-info btn-circle"><i class="fas fa-fw fa-eye"></i></a>
+                                        <a href="<?= base_url('booking/hapusBooking/') . $b['id'] ?>" class="btn btn-danger btn-circle" onclick="hapus(<?= $b['id'] ?>)"><i class="fas fa-fw fa-trash"></i></a>
 
-                                        <a href="<?= base_url('admin/edit_booking/') . $b['id'] ?>" class="btn btn-warning btn-circle"><i class="fas fa-fw fa-pen"></i></a>
+                                        <a href="<?= base_url('booking/editBooking/') . $b['id'] ?>" class="btn btn-warning btn-circle"><i class="fas fa-fw fa-pen"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <a class="btn btn-warning mb-3" href="<?= base_url('admin/booking') ?>">
+    <a class="btn btn-warning mb-3" href="<?= base_url('booking') ?>">
         <h5><i class="fas fa-angle-left"></i> Kembali</h5>
     </a>
     <div class="card mb-5 ">
@@ -51,7 +51,8 @@
                                     </tr>
                                     <tr>
                                         <th>Harga</th>
-                                        <td><?= $booking['harga']; ?></td>
+
+                                        <td><?="Rp " . number_format($booking['harga'],2,',','.') ; ?></td>
                                     </tr>
                                 </tbody>
                             </table>

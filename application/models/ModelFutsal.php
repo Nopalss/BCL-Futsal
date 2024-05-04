@@ -120,13 +120,22 @@ class ModelFutsal extends CI_Model
         $newId  = $wordId . $newTanggal . $numberId;
         return $newId;
     }
-    public function auto_idlaporan()
+    public function auto_idlaporanH()
     {
         $wordId = "LH";
         $y = date('y');
         $m = date('m');
         $d = date('d');
         $newTanggal = $y . $m . $d;
+        $newId  = $wordId . $newTanggal;
+        return $newId;
+    }
+    public function auto_idlaporanB()
+    {
+        $wordId = "LB";
+        $y = date('y');
+        $m = date('m');
+        $newTanggal = $y . $m;
         $newId  = $wordId . $newTanggal;
         return $newId;
     }
@@ -145,8 +154,7 @@ class ModelFutsal extends CI_Model
         $y = date('Y');
         $m = date('m');
         $d = date('d');
-        $t = $d - 1;
-        $query = "SELECT DISTINCT tanggal FROM transaksi WHERE tanggal = '$y-$m-$t' OR tanggal = '$y-$m-$d' ORDER BY tanggal ASC";
+        $query = "SELECT DISTINCT tanggal FROM transaksi WHERE tanggal = '$y-$m-$d' AND statuss = 'Belum' ORDER BY tanggal ASC";
         return $this->db->query($query)->result_array();
     }
     
@@ -170,6 +178,65 @@ class ModelFutsal extends CI_Model
             }
         }else{
             return true;
+        }
+    }
+
+    public function jam_lapor(){
+        date_default_timezone_set('Asia/Jakarta');
+        $jam = date('H');
+
+        if($jam >= 22){
+            return true;
+        }else{
+            return false;
+        }
+        // return true;
+    }
+
+    public function total_laporan_harian(){
+        $query = "SELECT SUM(pendapatan) as pendapatan FROM laporan";
+        return $this->db->query($query)->row_array();
+    }
+
+    public function get_lapangan($tanggal, $lapangan){
+        $query = "SELECT transaksi.nota as nota, booking.jam_mulai as jam, transaksi.total as total FROM transaksi 
+                JOIN booking ON transaksi.id_booking = booking.id WHERE transaksi.tanggal = '$tanggal' AND booking.id_lapangan = '$lapangan' AND booking.status ='Lunas'";
+        return $this->db->query($query)->result_array();
+    }
+
+    public function get_pemakaiLapangan($tanggal,$lapangan){
+        $query = "SELECT COUNT(transaksi.nota) as pemakaian FROM transaksi 
+                JOIN booking ON transaksi.id_booking = booking.id WHERE transaksi.tanggal = '$tanggal' AND booking.id_lapangan = '$lapangan' AND booking.status ='Lunas'";
+        return $this->db->query($query)->row_array();
+    }
+    public function get_pendapatanLapangan($tanggal,$sr, $ss){
+        $standar = "SELECT SUM(transaksi.total) as pendapatan FROM transaksi 
+                JOIN booking ON transaksi.id_booking = booking.id WHERE transaksi.tanggal = '$tanggal' AND booking.id_lapangan = '$sr' AND booking.status ='Lunas'";
+        $standar = $this->db->query($standar)->row_array();
+        $sintetis = "SELECT SUM(transaksi.total) as pendapatan FROM transaksi 
+                JOIN booking ON transaksi.id_booking = booking.id WHERE transaksi.tanggal = '$tanggal' AND booking.id_lapangan = '$ss' AND booking.status ='Lunas'";
+        $sintetis = $this->db->query($sintetis)->row_array();
+        return [$standar['pendapatan'], $sintetis['pendapatan']];
+    }
+
+    public function pendapatanBulan(){
+        date_default_timezone_set('Asia/Jakarta');
+        $m = date('m');
+        $y = date('Y');
+        $pendapatan = "SELECT SUM(pendapatan) AS pendapatan FROM laporan WHERE tanggal LIKE '%$y-$m%'";
+        $pendapatan = $this->db->query($pendapatan)->row_array();
+        $pendapatan = $pendapatan['pendapatan'];
+        return $pendapatan;
+    }
+
+    public function akhirBulan(){
+        date_default_timezone_set('Asia/Jakarta');
+        $d = date('d');
+        $ab = date('t');
+        if($d == $ab){
+            return true;
+        }else{
+            return false;
         }
     }
 }

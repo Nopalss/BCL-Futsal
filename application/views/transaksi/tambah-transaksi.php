@@ -7,7 +7,7 @@
       </div>
       
       <div class="card-body">
-        <form action="<?= base_url('admin/tambahTransaksi') ?> " method="post">
+        <form action="<?= base_url('transaksi/tambahTransaksi') ?> " method="post">
           <div class="form-group">
             <label for="nota"><b>Nota</b></label>
             <input type="text" id="nota" class="form-control" name="nota" value="<?= $nota?>" readonly >
@@ -35,7 +35,7 @@
             <?= form_error('total', '<small class="text-danger pl-3">', '</small>'); ?>
           </div>
           <div class="form-group text-right mb-0">
-            <a href="<?= base_url('admin/transaksi')?>" class="btn btn-danger">Batal</a>
+            <a href="<?= base_url('transaksi')?>" class="btn btn-danger">Batal</a>
             <button type="submit" class="btn btn-primary">Simpan</button>
           </div>
         </form>

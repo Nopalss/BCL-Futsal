@@ -7,26 +7,21 @@
       </div>
       
       <div class="card-body">
-        <form action="<?= base_url('laporan/tambahLaporanHarian') ?> " method="post">
+        <form action="<?= base_url('laporan/tambahLaporanBulanan') ?> " method="post">
           <div class="form-group">
             <label for="id"><b>Id Laporan</b></label>
             <input type="text" id="id" class="form-control" name="id" value="<?= $id_laporan?>" readonly >
           </div>
           <div class="form-group">
-            <label for="tanggal"><b>Tanggal</b></label>
-            <select id="tanggal" class="form-control" name="tanggal" onchange="pilih_laporan()">
-                <option value="">-> Pilih Tanggal<-</option>
-                <?php foreach($transaksi as $t): ?>
-                  <option value="<?= $t['tanggal']?>"><?= $t['tanggal']; ?></option>
-                  <?php endforeach; ?>
+            <label for="bulan"><b>Bulan</b></label>
+            <input type="text" id="bulan" class="form-control" name="bulan" value="<?= date('M')?>" readonly >
+            <?= form_error('bulan', '<small class="text-danger pl-3">', '</small>'); ?>
 
-            </select>
-            <?= form_error('tanggal', '<small class="text-danger pl-3">', '</small>'); ?>
           </div>
           
           <div class="form-group">
             <label for="pendapatan"><b>Pendapatan</b></label>
-            <input type="text" id="pendapatan" class="form-control" name="pendapatan" readonly >
+            <input type="text" id="pendapatan" class="form-control" name="pendapatan" value="<?= $pendapatan?>" readonly >
           </div>
 
           <div class="form-group text-right mb-0">
