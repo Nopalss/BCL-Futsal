@@ -44,7 +44,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <?= form_open_multipart('admin'); ?>
+                    <?= form_open_multipart('akun'); ?>
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="text" class="form-control" id="email" name="email" value="<?= $user['email']?>" readonly>

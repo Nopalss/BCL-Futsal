@@ -5,7 +5,9 @@
                 <h3><?= $title; ?></h3>
             </div>
             <div class="card-body">
-                <a href="<?= base_url('laporan/tambahLaporanHarian') ?>" class="btn btn-success mb-3"><i class="fas fa-fw fa-plus"></i> Tambah</a>
+                <a href="<?= base_url('laporan/tambahLaporanHarian') ?>" class="btn btn-success mb-3"><i class="fas fa-fw fa-plus"></i></a>
+                <a href="<?= base_url('laporan/printLaporanHarian') ?>" class="btn btn-info mb-3"><i class="fas fa-fw fa-print"></i></a>
+                <a href="<?= base_url('laporan/pdfLaporanHarian') ?>" class="btn btn-danger mb-3"><i class="fas fa-fw fa-file-pdf"></i></a>
                 <div class="table-responsive-lg">
                     <table class="table table-hover" id="dataTable"  cellspacing="0">
                         <thead>
@@ -20,6 +22,7 @@
                         <tbody>
                             <?php
                             $i = 1;
+                            $pendapatan2 = 0;
                             foreach ($laporan as $l) : ?>
                                 <tr>
                                     <th scope="row"><?= $i++; ?></th>
@@ -29,13 +32,14 @@
                                     <td>
                                         <a href="<?= base_url('laporan/detailLaporanHarian/') . $l['id'] ?>" class="btn btn-info btn-circle"><i class="fas fa-fw fa-eye"></i></a>
                                     </td>
+                                    <?php $pendapatan2 += $l['pendapatan']; ?>
                                 </tr>
                                 <?php endforeach; ?>
-                                <tr >
+                                <!-- <tr >
                                     <th colspan="3" class="text-center">Total</th>
-                                    <th><div class="btn btn-success font-weight-bold"><?= "Rp " . number_format($pendapatan['pendapatan'],2,',','.'); ?></div></th>
+                                    <th><div class="btn btn-success font-weight-bold"><?= "Rp " . number_format($pendapatan2,2,',','.'); ?></div></th>
                                     <th></th>
-                                </tr>
+                                </tr> -->
                         </tbody>
                     </table>
                 </div>

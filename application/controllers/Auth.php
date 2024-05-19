@@ -46,12 +46,10 @@ class Auth extends CI_Controller{
                     $this->session->set_userdata($data); // dimpan data user di session
                     
                     // cek roll pekerjaan nya
-                    if($user['roll_id'] == 1){ // jika ower 
-                        redirect('owner'); // panggil class owner / diizinkan masuk
-                    }elseif($user['roll_id'] == 2){ // jika admin 
-                        redirect('admin'); // panggil class admin / diizinkan masuk
+                    if($user['roll_id'] == 1 || $user['roll_id'] == 2 ){ // jika ower 
+                        redirect('dashboard'); // panggil class owner / diizinkan masuk
                     }elseif($user['roll_id'] == 3){ // jika admin 
-                        redirect('user'); // panggil class admin / diizinkan masuk
+                        redirect('akun/user'); // panggil class admin / diizinkan masuk
                     }else{
                         redirect('auth');// user
                     }

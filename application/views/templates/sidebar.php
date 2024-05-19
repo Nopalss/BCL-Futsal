@@ -12,15 +12,9 @@
 
            <!-- Divider -->
            <li class="nav-item">
-               <a class="nav-link pb-0" href="<?= base_url('admin') ?>">
-                   <i class="fas fa-user fa-fw text-warning"></i>
-                   <span>My Profile</span>
-               </a>
-           </li>
-           <li class="nav-item">
-               <a class="nav-link pb-0" href="<?= base_url('admin/changepassword') ?>">
-               <i class="fas fa-lock fa-fw text-warning"></i>
-               <span>Change Password</span>
+               <a class="nav-link pb-0" href="<?= base_url('dashboard') ?>">
+                   <i class="fas fa-fw fa-chart-pie text-warning"></i>
+                   <span>Dashboard</span>
                </a>
            </li>
            <li class="nav-item ">
@@ -31,14 +25,14 @@
            </li>
            <li class="nav-item ">
                <a class="nav-link pb-0" href="<?= base_url('transaksi') ?>">
-               <i class="fas fa-money-bill-wave fa-fw text-warning"></i>
-                <span>Transaksi</span>
+                   <i class="fas fa-money-bill-wave fa-fw text-warning"></i>
+                   <span>Transaksi</span>
                </a>
 
            </li>
            <li class="nav-item ">
                <a class="nav-link pb-0" href="<?= base_url('laporan/LaporanHarian') ?>">
-                    <i class="fas fa-file-invoice fa-fw text-warning"></i>
+                   <i class="fas fa-file-invoice fa-fw text-warning"></i>
                    <span>Laporan Harian</span>
                </a>
            </li>

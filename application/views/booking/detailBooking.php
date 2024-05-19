@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid mb-4">
     <a class="btn btn-warning mb-3" href="<?= base_url('booking') ?>">
         <h5><i class="fas fa-angle-left"></i> Kembali</h5>
     </a>

@@ -193,10 +193,10 @@ class ModelFutsal extends CI_Model
         // return true;
     }
 
-    public function total_laporan_harian(){
-        $query = "SELECT SUM(pendapatan) as pendapatan FROM laporan";
-        return $this->db->query($query)->row_array();
-    }
+    // public function total_laporan_harian($tabel){
+    //     $query = "SELECT SUM(pendapatan) as pendapatan FROM $tabel";
+    //     return $this->db->query($query)->row_array();
+    // }
 
     public function get_lapangan($tanggal, $lapangan){
         $query = "SELECT transaksi.nota as nota, booking.jam_mulai as jam, transaksi.total as total FROM transaksi 
@@ -206,15 +206,15 @@ class ModelFutsal extends CI_Model
 
     public function get_pemakaiLapangan($tanggal,$lapangan){
         $query = "SELECT COUNT(transaksi.nota) as pemakaian FROM transaksi 
-                JOIN booking ON transaksi.id_booking = booking.id WHERE transaksi.tanggal = '$tanggal' AND booking.id_lapangan = '$lapangan' AND booking.status ='Lunas'";
+                JOIN booking ON transaksi.id_booking = booking.id WHERE transaksi.tanggal LIKE '%$tanggal%' AND booking.id_lapangan = $lapangan AND booking.status ='Lunas'";
         return $this->db->query($query)->row_array();
     }
     public function get_pendapatanLapangan($tanggal,$sr, $ss){
         $standar = "SELECT SUM(transaksi.total) as pendapatan FROM transaksi 
-                JOIN booking ON transaksi.id_booking = booking.id WHERE transaksi.tanggal = '$tanggal' AND booking.id_lapangan = '$sr' AND booking.status ='Lunas'";
+                JOIN booking ON transaksi.id_booking = booking.id WHERE transaksi.tanggal LIKE '%$tanggal%' AND booking.id_lapangan = '$sr' AND booking.status ='Lunas'";
         $standar = $this->db->query($standar)->row_array();
         $sintetis = "SELECT SUM(transaksi.total) as pendapatan FROM transaksi 
-                JOIN booking ON transaksi.id_booking = booking.id WHERE transaksi.tanggal = '$tanggal' AND booking.id_lapangan = '$ss' AND booking.status ='Lunas'";
+                JOIN booking ON transaksi.id_booking = booking.id WHERE transaksi.tanggal LIKE '%$tanggal%' AND booking.id_lapangan = '$ss' AND booking.status ='Lunas'";
         $sintetis = $this->db->query($sintetis)->row_array();
         return [$standar['pendapatan'], $sintetis['pendapatan']];
     }
@@ -239,4 +239,24 @@ class ModelFutsal extends CI_Model
             return false;
         }
     }
+
+    public function get_laporanH($tanggal){
+        $query = "SELECT * FROM laporan WHERE tanggal LIKE '%$tanggal%'";
+        return $this->db->query($query)->result_array();
+    }
+
+    public function jumlah($table, $attr){
+        $query = "SELECT COUNT($attr) as total FROM $table";
+        return $this->db->query($query)->row_array();
+    }
+    public function total($table, $attr){
+        $query = "SELECT SUM($attr) as total FROM $table";
+        return $this->db->query($query)->row_array();
+    }
+    public function get_pendapatan_bulan(){
+        $y= date('Y');
+        $query = "SELECT * FROM laporan_bulan WHERE tanggal LIKE '%$y%'";
+        return $this->db->query($query)->result_array();
+    }
 }
+

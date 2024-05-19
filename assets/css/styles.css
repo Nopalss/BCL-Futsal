@@ -1,0 +1,36 @@
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+header{
+    width: 100%;
+    padding: 1.3rem;
+    background-color: aliceblue;
+    position: fixed;
+}
+header nav{
+    display: flex;
+    justify-content: space-between;
+}
+header nav .nav-logo h1{
+    font-size: 1.7rem;
+    padding: 0.5rem;
+
+} 
+
+.nav-desktop .nav-menu ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-desktop .nav-menu ul{
+    padding: 1rem;
+}

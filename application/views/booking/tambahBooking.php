@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid mb-4">
   <div class="col-lg-7 ">
 
     <div class="card  mt-5 bg-white mb-5 rounded shadow-lg">

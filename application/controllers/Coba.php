@@ -72,18 +72,47 @@ class Coba extends CI_Controller{
 // $pendapatan = $this->db->query($pendapatan)->row_array();
 // var_dump($pendapatan);
 
-date_default_timezone_set('Asia/Jakarta');
-$d = date('d');
-echo $d;
-$ab = date('t');
-var_dump($ab);
-var_dump(true);
-echo $ab + 1;
-if("31" === $ab){
-    echo " l";
-}else{
-    echo " kak";
-}
-}
+// date_default_timezone_set('Asia/Jakarta');
+// $d = date('d');
+// echo $d;
+// $ab = date('t');
+// var_dump($ab);
+// var_dump(true);
+// echo $ab + 1;
+// if("31" === $ab){
+//     echo " l";
+// }else{
+//     echo " kak";
+// }
+// }
+// ('LH240507', '2024-05-07', '2000000'), 
+//     ('LH240508', '2024-05-08', '2000000'),
+//     ('LH240509', '2024-05-09', '2000000'),
+//     ('LH240510', '2024-05-10', '2000000'), 
+//     ('LH240511', '2024-05-11', '2000000'),
+//     ('LH240512', '2024-05-12', '2000000'),
 
+// $i = 7;
+// for($i; $i<32; $i++){
+//     echo "('LH2405".$i."'".", '2024-05-".$i."'".", '2000000'), ";
+//     echo "<br>";
+// }
+// $data = $this->modelfutsal->get_laporanH('2024-05');
+//         foreach($data as $h){
+//             $pendapatan[] = $h['pendapatan'];
+//         }
+//         var_dump($pendapatan);
+// $query = "SELECT COUNT(transaksi.nota) as pemakaian FROM transaksi 
+// JOIN booking ON transaksi.id_booking = booking.id WHERE transaksi.tanggal LIKE '%2024-05%' AND booking.id_lapangan = 2 AND booking.status ='Lunas'";
+// $query = $this->db->query($query)->row_array();
+// var_dump($query);
+$y= date('Y');
+$query = "SELECT * FROM laporan_bulan WHERE tanggal LIKE '%$y%'";
+$query= $this->db->query($query)->result_array();
+
+var_dump($query);
+foreach($query as $q){
+    echo $q['pendapatan'];
+}
+}
 }

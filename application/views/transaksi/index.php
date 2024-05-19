@@ -30,11 +30,27 @@
                                     <td><?= "Rp " . number_format($t['total'],2,',','.') ; ?></td>
                                     <td>
                                         <a href="<?= base_url('transaksi/detailTransaksi/') . $t['nota'] ?>" class="btn btn-info btn-circle"><i class="fas fa-fw fa-eye"></i></a>
-                                        <a href="<?= base_url('transaksi/hapus_booking/') . $t['nota'] ?>" class="btn btn-danger btn-circle"><i class="fas fa-fw fa-trash"></i></a>
-
-                                        <a href="<?= base_url('transaksi/edit_booking/') . $t['nota'] ?>" class="btn btn-warning btn-circle"><i class="fas fa-fw fa-pen"></i></a>
+                                        <a href="<?= base_url('transaksi/hapusTransaksi/') . $t['nota'] ?>" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#<?= $t['nota']?>"><i class="fas fa-fw fa-trash"></i></a>
                                     </td>
                                 </tr>
+                                 <!-- modal -->
+                                 <div class="modal fade" id="<?=$t['nota']?>" tabindex="-1" role="dialog" aria-labelledby="<?=$t['nota']?>" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Yakin Ingin Menghapus Transaksi?</h5>
+                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">Select 'Hapus' below if you are ready to delete Transaksi.</div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                <a class="btn btn-primary" href="<?= base_url('transaksi/hapusTransaksi/'). $t['nota'] ?>">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             <?php endforeach; ?>
                         </tbody>
                     </table>

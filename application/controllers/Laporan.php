@@ -3,12 +3,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Laporan extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        is_logged_in();
+    }
     public function laporanHarian()
     {
         $data['title'] = 'Laporan Harian';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['laporan'] = $this->modelfutsal->get('laporan');
-        $data['pendapatan'] = $this->modelfutsal->total_laporan_harian();
+        // $data['pendapatan'] = $this->modelfutsal->total_laporan_harian('laporan');
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -91,6 +96,12 @@ class Laporan extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function harianPdf($id){
+        $db = new mysqli("localhost", "root", "", "bcl_futsal");
+        if($db->errno == 0){
+            $pembayaran = $this->ManajemenData_model->get_nonota($id);
+        }
+    }
     public function laporanBulanan(){
         $data['title'] = 'Laporan Bulanan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
@@ -122,10 +133,12 @@ class Laporan extends CI_Controller
                         $id = $this->input->post('id');
                         $bulan = $this->input->post('bulan');
                         $pendapatan = $this->input->post('pendapatan');
+                        $tanggal = date('Y-m');
                         $laporan = [
                             'id_laporanB' => $id,
                             'bulan ' => $bulan,
-                            'pendapatan' => $pendapatan
+                            'pendapatan' => $pendapatan,
+                            'tanggal' => $tanggal
                         ];
                         $this->modelfutsal->insert('laporan_bulan', $laporan);
                         $this->session->set_flashdata('message', '<div class="alert alert-success alert-message mb-0" role="alert"><i class="fas fa-info-circle"></i> Laporan berhasil ditambahkan!</div>');
@@ -136,9 +149,37 @@ class Laporan extends CI_Controller
                 redirect('laporan/laporanBulanan');
             }
         }else{
-            $t = date('t');
-            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-message mb-0" role="alert"><i class="fas fa-info-circle"></i> Tidak Bisa Membuat Laporan Karena Belum Tanggal <?= $t ?>!</div>');
+            $t = date('t M Y');
+            $m = '<div class="alert alert-danger alert-message mb-0" role="alert"><i class="fas fa-info-circle"></i> Tidak Bisa Membuat Laporan Karena Belum Tanggal '. $t . '!</div>';
+            $this->session->set_flashdata('message', $m );
             redirect('laporan/laporanBulanan');
         }
     }
+
+    public function detailLaporanBulanan($id)
+    {
+        $data['title'] = 'Laporan Bulanan';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['laporan'] = $this->modelfutsal->getById('laporan_bulan', ['id_laporanB' => $id]);
+        $data['harian'] = $this->modelfutsal->get_laporanH($data['laporan']['tanggal']);
+        foreach($data['harian'] as $h){
+            $pendapatan[] = $h['pendapatan'];
+        }
+
+        // $data['pendapatan'] = $this->modelfutsal->get_pendapatanLapangan($data['laporan']['tanggal'], 1, 2);
+        $data['pendapatan'] = $pendapatan;
+        // buat pie chart
+        $Pstandar = $this->modelfutsal->get_pemakaiLapangan($data['laporan']['tanggal'], 1);
+        $Psintetis = $this->modelfutsal->get_pemakaiLapangan($data['laporan']['tanggal'], 2);
+        $data['lapangan'] = ['Standart', 'Sintetis'];
+        $data['pemakaian'] = [$Pstandar['pemakaian'], $Psintetis['pemakaian']];
+        $data['id_laporan'] = $id;
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('laporan/bulanan/detail-laporan', $data);
+        $this->load->view('templates/footer');
+    }
+    
+    
 }

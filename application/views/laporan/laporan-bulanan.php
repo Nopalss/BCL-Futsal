@@ -5,7 +5,9 @@
                 <h3><?= $title; ?></h3>
             </div>
             <div class="card-body">
-                <a href="<?= base_url('laporan/tambahLaporanBulanan') ?>" class="btn btn-success mb-3"><i class="fas fa-fw fa-plus"></i> Tambah</a>
+                <a href="<?= base_url('laporan/tambahLaporanBulanan') ?>" class="btn btn-success mb-3"><i class="fas fa-fw fa-plus"></i> </a>
+                <a href="<?= base_url('laporan/printLaporanBulanan') ?>" class="btn btn-info mb-3"><i class="fas fa-fw fa-print"></i></a>
+                <a href="<?= base_url('laporan/pdfLaporanBulanan') ?>" class="btn btn-danger mb-3"><i class="fas fa-fw fa-file-pdf"></i></a>
                 <div class="table-responsive-lg">
                     <table class="table table-hover" id="dataTable"  cellspacing="0">
                         <thead>

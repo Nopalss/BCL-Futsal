@@ -75,4 +75,10 @@ class Transaksi extends CI_Controller
         $this->load->view('transaksi/print', $data);
     }
 
+    public function hapusTransaksi($id)
+    {
+        $this->db->delete('transaksi', ['nota' => $id]);
+        $this->session->set_flashdata('message', '<div class="alert alert-message alert-danger mb-0" role="alert"><i class="fas fa-info-circle"></i> Data Transaksi berhasil dihapus!</div>');
+        redirect('transaksi');
+    }
 }
