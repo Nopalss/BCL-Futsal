@@ -132,8 +132,15 @@ class Booking extends CI_Controller
             $tanggal = $this->input->post('tanggal');
             $id_lapangan = $this->input->post('id_lapangan');
             $pecah = explode('-', $tanggal);
-            if($pecah[0] >= date('Y') && $pecah[1] >= date('m') && $pecah[2] >= date('d')){
-                $data['tanggal'] = $tanggal;
+            if($pecah[0] >= date('Y') && $pecah[1] >= date('m')){
+                if($pecah[1] == date('m') && $pecah[2] >= date('d')){
+                    $data['tanggal'] = $tanggal;
+                }elseif($pecah[1] > date('m')){
+                    $data['tanggal'] = $tanggal;
+                }else{
+                    $this->session->set_flashdata('message', '<div class="alert alert-message alert-danger" role="alert"><i class="fas fa-info-circle"></i> Tanggal Tidak Boleh Kurang Dengan Tanggal Sekarang !</div>');
+                    redirect('booking/jadwalBooking');
+                }
                 $tanggal1 = [
                     'tanggal' => $tanggal,
                     'id_lapangan' => $id_lapangan,
@@ -171,13 +178,11 @@ class Booking extends CI_Controller
         $data['booking'] = $this->modelfutsal->getById('booking', ['id' => $id]);
         $data['jam'] = $this->modelfutsal->get('jam');
         $data['lapangan'] = $this->modelfutsal->get('lapangan');
-        
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
             $this->load->view('booking/editJam', $data);
             $this->load->view('templates/footer');
-       
     }
     public function editBooking(){
         $data['title'] = 'Edit Booking';

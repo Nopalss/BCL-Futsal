@@ -27,4 +27,12 @@ function is_logged_in(){
         //     redirect('auth/blocked');
         // }
     }
-}   
+}  
+function checked_user_login(){
+    $ci = get_instance();
+    if (!$ci->session->userdata('email')){
+        return "Visitor";
+    }else{
+        return "Member";
+    }
+} 

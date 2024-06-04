@@ -20,23 +20,17 @@ class ModelFutsal extends CI_Model
         $this->db->where($column, $data);
         $this->db->delete($table);
     }
-    public function getSubMenu()
-    {
-        $query = "SELECT `user_sub_menu`.*, `user_menu`.`menu`
-                    FROM `user_sub_menu` JOIN `user_menu`
-                    ON `user_sub_menu`.`menu_id` = `user_menu`.`id`";
-        return $this->db->query($query)->result_array();
+    public function getMyBooking($id){
+        $query = "SELECT booking.*, user.id AS id_user, pelanggan.id AS id_pelanggan FROM booking 
+                JOIN pelanggan ON booking.id_pelanggan = pelanggan.id
+                JOIN user ON pelanggan.id_user = user.id
+                WHERE user.id =$id";
+        return $this->db->query($query)->result_array();     
     }
-
     public function get_where($table, $id)
     {
         return $this->db->get_where($table, $id)->result_array();
     }
-
-    // public function get_status(){
-
-    // }
-
     public function get_idJam($jam)
     {
         $this->db->select("id_jam");
@@ -45,7 +39,6 @@ class ModelFutsal extends CI_Model
         $this->db->where($where);
         return $this->db->get();
     }
-
     public function getBooking($id)
     {
         $query = "SELECT `booking`.*, `lapangan`.*, `pelanggan`.*
@@ -100,7 +93,7 @@ class ModelFutsal extends CI_Model
     public function auto_nota()
     {
         $this->db->select('RIGHT(nota,3) as idTransaksi', false);
-        $this->db->order_by("nota", "DESC");
+        $this->db->order_by("idTransaksi", "DESC");
         $this->db->limit(1);
         $query = $this->db->get('transaksi');
 
@@ -110,7 +103,6 @@ class ModelFutsal extends CI_Model
         } else {
             $id  = 1;
         }
-
         $numberId = str_pad($id, 3, "0", STR_PAD_LEFT);
         $wordId = "TR";
         $y = date('y');
@@ -139,7 +131,6 @@ class ModelFutsal extends CI_Model
         $newId  = $wordId . $newTanggal;
         return $newId;
     }
-
     public function jamSelesai($jam_mulai, $durasi)
     {
         $jam_mulai = intval($jam_mulai);
@@ -148,7 +139,6 @@ class ModelFutsal extends CI_Model
         $jam_selesai = $this->db->get_where('jam', ['id_jam' => $tambah])->row_array();
         return $jam_selesai;
     }
-
     public function get_tanggal(){
         date_default_timezone_set('Asia/Jakarta');
         $y = date('Y');
@@ -156,31 +146,34 @@ class ModelFutsal extends CI_Model
         $d = date('d');
         $query = "SELECT DISTINCT tanggal FROM transaksi WHERE tanggal = '$y-$m-$d' AND statuss = 'Belum' ORDER BY tanggal ASC";
         return $this->db->query($query)->result_array();
-    }
-    
+    }  
     public function get_pendapatan($tanggal){
         $query = "SELECT SUM(total) as pendapatan FROM transaksi WHERE tanggal = '$tanggal'";
         return $this->db->query($query)->row_array();
     }
-
     public function seleksiJ($jam, $tanggal){
         date_default_timezone_set('Asia/Jakarta');
-        $js = date('H');
-        $pecah = explode('-', $tanggal);
+        $js = date('H'); // ngambil jam sekarang
+        $pecah = explode('-', $tanggal); // pecah tanggal
+        // menyamakan tanggal sekarang,   
         if($pecah[0] == date('Y') && $pecah[1] == date('m') && $pecah[2] == date('d')){
+            // jika sama maka jam yang ingin di booking user dibandingkan terlebih dahulu  
             $pecah = explode('-', $jam);
             $pecah = explode(':', $pecah[0]);
-    
+            // jika jam yang ingin di booking sudah lewat maka mengembalikan false
             if($js > $pecah[0] ){
                 return false;
-            }else{
+            }else{// jika tidak true
                 return true;
             }
-        }else{
+        }else{ // jika tanggal tidak sama dengan tanggal sekarang maka mengembalikan true
             return true;
         }
     }
-
+    public function cek_booking($id_lapangan, $jam_mulai, $tanggal){
+        $query = "SELECT * FROM booking WHERE id_lapangan = $id_lapangan AND jam_mulai = '$jam_mulai' AND tanggal = '$tanggal'";
+        return $this->db->query($query)->row_array();
+    }
     public function jam_lapor(){
         date_default_timezone_set('Asia/Jakarta');
         $jam = date('H');
@@ -192,18 +185,11 @@ class ModelFutsal extends CI_Model
         }
         // return true;
     }
-
-    // public function total_laporan_harian($tabel){
-    //     $query = "SELECT SUM(pendapatan) as pendapatan FROM $tabel";
-    //     return $this->db->query($query)->row_array();
-    // }
-
     public function get_lapangan($tanggal, $lapangan){
         $query = "SELECT transaksi.nota as nota, booking.jam_mulai as jam, transaksi.total as total FROM transaksi 
                 JOIN booking ON transaksi.id_booking = booking.id WHERE transaksi.tanggal = '$tanggal' AND booking.id_lapangan = '$lapangan' AND booking.status ='Lunas'";
         return $this->db->query($query)->result_array();
     }
-
     public function get_pemakaiLapangan($tanggal,$lapangan){
         $query = "SELECT COUNT(transaksi.nota) as pemakaian FROM transaksi 
                 JOIN booking ON transaksi.id_booking = booking.id WHERE transaksi.tanggal LIKE '%$tanggal%' AND booking.id_lapangan = $lapangan AND booking.status ='Lunas'";
@@ -218,7 +204,6 @@ class ModelFutsal extends CI_Model
         $sintetis = $this->db->query($sintetis)->row_array();
         return [$standar['pendapatan'], $sintetis['pendapatan']];
     }
-
     public function pendapatanBulan(){
         date_default_timezone_set('Asia/Jakarta');
         $m = date('m');
@@ -228,7 +213,6 @@ class ModelFutsal extends CI_Model
         $pendapatan = $pendapatan['pendapatan'];
         return $pendapatan;
     }
-
     public function akhirBulan(){
         date_default_timezone_set('Asia/Jakarta');
         $d = date('d');
@@ -239,7 +223,6 @@ class ModelFutsal extends CI_Model
             return false;
         }
     }
-
     public function get_laporanH($tanggal){
         $query = "SELECT * FROM laporan WHERE tanggal LIKE '%$tanggal%'";
         return $this->db->query($query)->result_array();
@@ -258,5 +241,15 @@ class ModelFutsal extends CI_Model
         $query = "SELECT * FROM laporan_bulan WHERE tanggal LIKE '%$y%'";
         return $this->db->query($query)->result_array();
     }
+    public function get_comment($id){
+        $query= "SELECT comment.*, user.name, user.image FROM comment JOIN user ON comment.id_user = user.id WHERE comment.id_lapangan = $id ORDER BY comment.id DESC";
+        return $this->db->query($query)->result_array();
+    }
+    public function get_detailTransaksi($pelanggan){
+        $query = "SELECT pelanggan.*, booking.*, transaksi.* FROM transaksi 
+                JOIN booking ON transaksi.id_booking = booking.id
+                JOIN pelanggan ON booking.id_pelanggan = pelanggan.id
+                WHERE booking.id_pelanggan = '$pelanggan'";
+        return $this->db->query($query)->row_array();
+    }
 }
-

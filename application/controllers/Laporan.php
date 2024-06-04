@@ -13,7 +13,6 @@ class Laporan extends CI_Controller
         $data['title'] = 'Laporan Harian';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['laporan'] = $this->modelfutsal->get('laporan');
-        // $data['pendapatan'] = $this->modelfutsal->total_laporan_harian('laporan');
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -27,24 +26,23 @@ class Laporan extends CI_Controller
         $data['transaksi'] = $this->modelfutsal->get_tanggal();
         $data['id_laporan'] = $this->modelfutsal->auto_idlaporanH();
         $this->form_validation->set_rules('tanggal', 'Tanggal', 'required', ['required' => 'Tanggal Wajib Diisi!']);
-
-        if ($this->modelfutsal->jam_lapor() == true) {
-            if ($this->form_validation->run() == false) {
-                $this->load->view('templates/header', $data);
-                $this->load->view('templates/sidebar', $data);
-                $this->load->view('templates/topbar', $data);
-                $this->load->view('laporan/tambah-laporan', $data);
-                $this->load->view('templates/footer');
-            } else {
-                $id = $this->input->post('id');
-                $tanggal = $this->input->post('tanggal');
+        $hari = $this->db->get_where('laporan', ['tanggal' => date('Y-m-d')])->row_array();
+        if(!$hari){
+            if ($this->modelfutsal->jam_lapor() == true) {
+                if ($this->form_validation->run() == false) {
+                    $this->load->view('templates/header', $data);
+                    $this->load->view('templates/sidebar', $data);
+                    $this->load->view('templates/topbar', $data);
+                    $this->load->view('laporan/tambah-laporan', $data);
+                    $this->load->view('templates/footer');
+                } else {
+                    $id = $this->input->post('id');
+                    $tanggal = $this->input->post('tanggal');
                 $pendapatan = $this->input->post('pendapatan');
                 $cut = explode('Rp', $pendapatan);
                 $cut = explode('.', $cut[1]);
-                $cut2 = explode(',', $cut[1]);
-                $pendapatan = intval($cut[0].$cut2[0]);
-
-
+                $cut2 = explode(',', $cut[0]);
+                $pendapatan = intval($cut2[0] . $cut2[1] . $cut2[2]);
                 $laporan = [
                     'id' => $id,
                     'tanggal ' => $tanggal,
@@ -61,6 +59,11 @@ class Laporan extends CI_Controller
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger alert-message mb-0" role="alert"><i class="fas fa-info-circle"></i> Belum Saatnya Untuk Membuat Laporan, Harap Kembali Lagi Pada Jam 22:00!</div>');
+            redirect('laporan/laporanHarian');
+        }
+        }else{
+            $d = '<div class="alert alert-danger alert-message mb-0" role="alert"><i class="fas fa-info-circle"></i> Laporan Tanggal '. date('Y-m-d') .' Sudah Dibuat!</div>';
+            $this->session->set_flashdata('message', $d);
             redirect('laporan/laporanHarian');
         }
     }
@@ -96,13 +99,15 @@ class Laporan extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function harianPdf($id){
+    public function harianPdf($id)
+    {
         $db = new mysqli("localhost", "root", "", "bcl_futsal");
-        if($db->errno == 0){
+        if ($db->errno == 0) {
             $pembayaran = $this->ManajemenData_model->get_nonota($id);
         }
     }
-    public function laporanBulanan(){
+    public function laporanBulanan()
+    {
         $data['title'] = 'Laporan Bulanan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['laporan'] = $this->modelfutsal->get('laporan_bulan');
@@ -114,24 +119,28 @@ class Laporan extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function tambahLaporanBulanan(){
+    public function tambahLaporanBulanan()
+    {
         $data['title'] = 'Tambah Laporan Bulanan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['laporan'] = $this->modelfutsal->get('laporan_bulan');
         $data['pendapatan'] = $this->modelfutsal->pendapatanBulan();
+        var_dump($data['pendapatan']);
         $data['id_laporan'] = $this->modelfutsal->auto_idlaporanB();
         $this->form_validation->set_rules('bulan', 'bulan', 'required', ['required' => 'bulan Wajib Diisi!']);
-        if($this->modelfutsal->akhirBulan() == true){
-            if($this->modelfutsal->jam_lapor() == true){
-                if($this->form_validation->run() == false){
-                    $this->load->view('templates/header', $data);
-                    $this->load->view('templates/sidebar', $data);
-                    $this->load->view('templates/topbar', $data);
-                    $this->load->view('laporan/tambah-laporanB', $data);
-                    $this->load->view('templates/footer');
-                }else{
-                        $id = $this->input->post('id');
+        $bulan = $this->db->get_where('laporan_bulan', ['bulan' => date('M')])->row_array();
+        if (!$bulan) {
+            if ($this->modelfutsal->akhirBulan() == false) {
+                if ($this->modelfutsal->jam_lapor() == false) {
+                    if ($this->form_validation->run() == false) {
+                        $this->load->view('templates/header', $data);
+                        $this->load->view('templates/sidebar', $data);
+                        $this->load->view('templates/topbar', $data);
+                        $this->load->view('laporan/tambah-laporanB', $data);
+                        $this->load->view('templates/footer');
+                    } else {
                         $bulan = $this->input->post('bulan');
+                        $id = $this->input->post('id');
                         $pendapatan = $this->input->post('pendapatan');
                         $tanggal = date('Y-m');
                         $laporan = [
@@ -144,14 +153,19 @@ class Laporan extends CI_Controller
                         $this->session->set_flashdata('message', '<div class="alert alert-success alert-message mb-0" role="alert"><i class="fas fa-info-circle"></i> Laporan berhasil ditambahkan!</div>');
                         redirect('laporan/laporanBulanan');
                     }
-            }else{
-                $this->session->set_flashdata('message', '<div class="alert alert-danger alert-message mb-0" role="alert"><i class="fas fa-info-circle"></i> Belum Saatnya Untuk Membuat Laporan, Harap Kembali Lagi Pada Jam 22:00!</div>');
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger alert-message mb-0" role="alert"><i class="fas fa-info-circle"></i> Belum Saatnya Untuk Membuat Laporan, Harap Kembali Lagi Pada Jam 22:00!</div>');
+                    redirect('laporan/laporanBulanan');
+                }
+            } else {
+                $t = date('t M Y');
+                $m = '<div class="alert alert-danger alert-message mb-0" role="alert"><i class="fas fa-info-circle"></i> Tidak Bisa Membuat Laporan Karena Belum Tanggal ' . $t . '!</div>';
+                $this->session->set_flashdata('message', $m);
                 redirect('laporan/laporanBulanan');
             }
         }else{
-            $t = date('t M Y');
-            $m = '<div class="alert alert-danger alert-message mb-0" role="alert"><i class="fas fa-info-circle"></i> Tidak Bisa Membuat Laporan Karena Belum Tanggal '. $t . '!</div>';
-            $this->session->set_flashdata('message', $m );
+            $m = '<div class="alert alert-danger alert-message mb-0" role="alert"><i class="fas fa-info-circle"></i> Laporan Bulan '. date('M') .' Sudah Dibuat!</div>';
+            $this->session->set_flashdata('message', $m);
             redirect('laporan/laporanBulanan');
         }
     }
@@ -162,7 +176,7 @@ class Laporan extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['laporan'] = $this->modelfutsal->getById('laporan_bulan', ['id_laporanB' => $id]);
         $data['harian'] = $this->modelfutsal->get_laporanH($data['laporan']['tanggal']);
-        foreach($data['harian'] as $h){
+        foreach ($data['harian'] as $h) {
             $pendapatan[] = $h['pendapatan'];
         }
 
@@ -180,6 +194,4 @@ class Laporan extends CI_Controller
         $this->load->view('laporan/bulanan/detail-laporan', $data);
         $this->load->view('templates/footer');
     }
-    
-    
 }

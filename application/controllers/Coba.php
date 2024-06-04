@@ -2,25 +2,91 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Coba extends CI_Controller{
-    
-    public function index(){
-        date_default_timezone_set('Asia/Jakarta');
-        $s = date('y');
-        echo $s;
-        // $tanggal = $this->session->userdata('tanggal');
-        // $pecah = explode('-', $tanggal);
+    public function __construct()
+    {
+        parent::__construct();
+        // $nama = [
+        //     'status' => checked_user_login()
+        // ];
+        // $this->session->set_userdata($nama);
+    }
+    public function index($tanggal = 'Y-m-d'){
+        // if($tanggal !== NULL){
+        //     echo date($tanggal);
+        // }
+        // $query= "SELECT comment.*, user.name, user.image FROM comment JOIN user ON comment.id_user = user.id WHERE comment.id_lapangan = 2 ";
+        // var_dump($this->db->query($query)->result_array());
+        // if(!$this->modelfutsal->cek_booking(1, '14:00 - 15:00', '2024-05-29')){
+        //     echo"Pea";
+        // }else{
+        //    var_dump($this->modelfutsal->cek_booking(1, '14:00 - 15:00', '2024-05-29'));
+        // }
+        // echo $this->session->userdata('id_lapangan');
+        // $query = "SELECT  booking.*, transaksi.* FROM transaksi 
+        // JOIN booking ON transaksi.id_booking = booking.id
+        // JOIN lapangan ON booking.id_lapangan = lapangan.id
+        // -- JOIN pelanggan ON booking.id_pelanggan = pelanggan.id
+        // WHERE transaksi.nota = 'TR240531001'";
+        // var_dump($this->db->query($query)->row_array());
+        // date_default_timezone_set('Asia/Jakarta');
+        // $p = time();
+        // $pecah = date('d F Y - H:i:s', $p);
+        // $pecah = explode('-', $pecah );
         // var_dump($pecah);
-        // echo $pecah[0];
-        if(1 <1){
-            echo "true";
+        // $query = "SELECT booking.*, user.id AS id_user , pelanggan.id AS id_pelanggan FROM booking 
+        //         JOIN pelanggan ON booking.id_pelanggan = pelanggan.id
+        //         JOIN user ON pelanggan.id_user = user.id
+        //         WHERE user.id = 7 ";
+        // var_dump($this->db->query($query)->result_array()); 
+        // $pendapatan = "Rp 2,000,000.00"; 
+        // $cut = explode('Rp', $pendapatan);
+        //         $cut = explode('.', $cut[1]);
+        //         $cut2 = explode(',', $cut[0]);
+        //         $pendapatan = intval($cut2[0] . $cut2[1] . $cut2[2]);
+        //         echo "<br>";
+        //         echo $cut2[2];
+        //         echo "<br>";
+        //         var_dump($pendapatan);
+        $tanggal = "2024-10-06";
+        $pecah = explode('-', $tanggal);
+        echo(date('d'));
+        echo '0' > '02';
+        if($pecah[1] == date('m') && $pecah[2] >= date('d')){
+            $data['tanggal'] = $tanggal;
+            echo "bener";
+            echo "<br>";
+        }elseif($pecah[1] >= date('m')){
+            echo "lanjut";
+            $data['tanggal'] = $tanggal;
+        }else{
+            echo "salah";
+            $this->session->set_flashdata('message', '<div class="alert alert-message alert-danger" role="alert"><i class="fas fa-info-circle"></i> Tanggal Tidak Boleh Kurang Dengan Tanggal Sekarang !</div>');
+            redirect('booking/jadwalBooking');
         }
-        $this->db->distinct('tanggal');
-        $data = $this->db->get('transaksi');
-        // var_dump($data);
-        $query = "SELECT SUM(total) as pendapatan FROM transaksi WHERE tanggal = '2024-04-17'";
-        $exequte = $this->db->query($query)->row_array();
-        // var_dump($exequte);
-        $jam_booking = $this->modelfutsal->get_where('booking', ['tanggal' => "2024-04-18", 'id_lapangan' => 1 ]);
+        //   $this->session->set_flashdata('message', '<div class="alert alert-message alert-danger" role="alert"><i class="fas fa-info-circle"></i> Tanggal Tidak Boleh Kurang Dengan Tanggal Sekarang !</div>');
+        //         redirect('booking/jadwalBooking');
+        // echo date('r');
+        // if($this->session->userdata('status') == 'Visitor'){
+        //     echo"asu";
+        // }else{
+        //     echo"anjay";
+        // }
+        // $s = date('y');
+        // echo $s;
+        // // $tanggal = $this->session->userdata('tanggal');
+        // // $pecah = explode('-', $tanggal);
+        // // var_dump($pecah);
+        // // echo $pecah[0];
+        // if(1 <1){
+        //     echo "true";
+        // }
+        // $this->db->distinct('tanggal');
+        // $data = $this->db->get('transaksi');
+        // // var_dump($data);
+        // $query = "SELECT SUM(total) as pendapatan FROM transaksi WHERE tanggal = '2024-04-17'";
+        // $exequte = $this->db->query($query)->row_array();
+        // // var_dump($exequte);
+        // $jam_booking = $this->modelfutsal->get_where('booking', ['tanggal' => "2024-04-18", 'id_lapangan' => 1 ]);
         // print_r($jam_booking);
         // var_dump($jam_booking);
 
@@ -106,13 +172,12 @@ class Coba extends CI_Controller{
 // JOIN booking ON transaksi.id_booking = booking.id WHERE transaksi.tanggal LIKE '%2024-05%' AND booking.id_lapangan = 2 AND booking.status ='Lunas'";
 // $query = $this->db->query($query)->row_array();
 // var_dump($query);
-$y= date('Y');
-$query = "SELECT * FROM laporan_bulan WHERE tanggal LIKE '%$y%'";
-$query= $this->db->query($query)->result_array();
+// $y= date('Y');
+// $query = "SELECT * FROM laporan_bulan WHERE tanggal LIKE '%$y%'";
+// $query= $this->db->query($query)->result_array();
 
-var_dump($query);
-foreach($query as $q){
-    echo $q['pendapatan'];
-}
+// var_dump($query);
+// foreach($query as $q){
+//     echo $q['pendapatan'];
 }
 }

@@ -41,6 +41,7 @@ class Auth extends CI_Controller{
                     // mengeset data 
                     $data = [
                         'email' => $user['email'],
+                        'id_user' => $user['id'],
                         'roll_id' => $user['roll_id'] // menentukan menu
                     ];
                     $this->session->set_userdata($data); // dimpan data user di session
@@ -49,7 +50,7 @@ class Auth extends CI_Controller{
                     if($user['roll_id'] == 1 || $user['roll_id'] == 2 ){ // jika ower 
                         redirect('dashboard'); // panggil class owner / diizinkan masuk
                     }elseif($user['roll_id'] == 3){ // jika admin 
-                        redirect('akun/user'); // panggil class admin / diizinkan masuk
+                        redirect('home'); // panggil class admin / diizinkan masuk
                     }else{
                         redirect('auth');// user
                     }
@@ -103,13 +104,49 @@ class Auth extends CI_Controller{
                 'date_created' => time()
             ];
             $this->db->insert('user', $data); // push ke database
+
+            // $this->_sendEmail();
+
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-message" role="alert">Congratulation your account has been created. Please Login!</div>');
             redirect('auth');
         }
     }
+    // private function _sendEmail(){
+    //     $config = [
+    //         'protocol' => 'smtp',
+    //         'smtp_host' => 'ssl://smtp.googlemail.com',
+    //         'smtp_user' => 'bakoelpisang@mail.com',
+    //         'smtp_pass' => 'Bakoel123',
+    //         'smtp_port' =>  465,
+    //         'mailtype'  => 'html',
+    //         'charset'   => 'utf-8',
+    //         'newline'   => "\r\n",
+    //     ];
+
+    //     $this->load->library('email',$config);  
+    //     $this->email->initialize($config);
+
+    //     $this->email->from('bakoelpisang@gmail.com', 'BCL Futsal');
+    //     $this->email->to('muhammadnaufalsaputra06@gmail.com');
+    //     $this->email->subject('Testing');
+    //     $this->email->message('halo bang');
+    //     if($this->email->send()){
+    //         return true;
+    //     }else{
+    //         echo $this->email->print_debugger();
+    //         die;
+    //     }
+
+    // }
+
     public function logout(){
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('roll_id');
-        redirect('auth');
+        $this->session->unset_userdata('status');
+        // $status = [
+        //     'status' => checked_user_login()
+        // ];
+        // $this->session->set_userdata($status);
+        redirect('home');
     }
 }

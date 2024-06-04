@@ -374,6 +374,31 @@
                             </div>
                           </div>
                         <?php endif; ?>
+                      <?php elseif($jumlah == 14): ?>
+                        <?php if ($jm['jam'] == $jamB[0]|| $jm['jam'] == $jamB[1] || $jm['jam'] == $jamB[2] || $jm['jam'] == $jamB[3] || $jm['jam'] == $jamB[4] || $jm['jam'] == $jamB[5] || $jm['jam'] == $jamB[6] || $jm['jam'] == $jamB[7] || $jm['jam'] == $jamB[8] || $jm['jam'] == $jamB[9] || $jm['jam'] == $jamB[10] || $jm['jam'] == $jamB[11] || $jm['jam'] == $jamB[12] || $jm['jam'] == $jamB[13]): ?>
+                          <div class="row">
+                            <div class="card shadow-sm m-3 rounded" style="width: 10em; height: 8em;">
+                              <div class="card-heading bg-gold rounded-top">
+                                <p class="p-1"></p>
+                              </div>
+                              <label class="card-body bg-biru text-gray-500 text-center" for="<?= $jm['id_jam'] ?>">
+                                <p><?= $jm['jam']; ?></p>
+                                <p class="badge badge-pill badge-warning text-white">Booked</p>
+                              </label>
+                            </div>
+                          </div>
+                        <?php else : ?>
+                          <div class="row">
+                            <div class="card shadow-sm m-3 rounded" style="width: 10em; height: 8em;">
+                              <div class="card-heading bg-gold rounded-top">
+                                <input class="border-none ml-1" type="radio" name="id_jam" id="<?= $jm['id_jam'] ?>" value="<?= $jm['id_jam'] ?>" checked>
+                              </div>
+                              <label class="card-body bg-biru text-white text-center" for="<?= $jm['id_jam'] ?>">
+                                <p><?= $jm['jam']; ?></p>
+                              </label>
+                            </div>
+                          </div>
+                        <?php endif; ?>
                     <?php endif; ?>
                   <?php endforeach; ?>
               <?php else : ?>

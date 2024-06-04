@@ -81,4 +81,73 @@ class Transaksi extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-message alert-danger mb-0" role="alert"><i class="fas fa-info-circle"></i> Data Transaksi berhasil dihapus!</div>');
         redirect('transaksi');
     }
+
+    public function UserTransaksi(){
+        $data['title'] = 'Succes Payment';
+        $data['menu'] = $this->modelfutsal->get_where('user_sub_menu', ['menu_id' => $this->session->userdata('roll_id')]);
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();  
+        $name = htmlspecialchars($this->input->post('name',true));
+        $no_telepon = htmlspecialchars($this->input->post('no_telepon', true));
+        if($name && $no_telepon){
+            $metode = htmlspecialchars($this->input->post('metode', true));
+            if($metode){
+                $jam_mulai = $this->session->userdata('jam_mulai');
+                $tanggal =$this->session->userdata('tanggal');
+                $harga = $this->session->userdata('harga');
+                $id_lapangan = $this->session->userdata('id_lapangan');
+                $id_booking =  $this->modelfutsal->auto_idbooking();
+                $id_pelanggan =  $this->modelfutsal->auto_idpelanggan();
+                $nota =  $this->modelfutsal->auto_nota();
+
+                $booking = [
+                    'id' => $id_booking,
+                    'id_pelanggan' => $id_pelanggan,
+                    'id_lapangan' => $id_lapangan,
+                    'tanggal' => $tanggal,
+                    'jam_mulai' => $jam_mulai,
+                    'status' => 'Lunas',
+                    'harga' => $harga, 
+                ];
+                $pelanggan = [
+                    'id' => $id_pelanggan,
+                    'id_user' => $data['user']['id'],
+                    'nama' => $name,
+                    'no_telepon' => $no_telepon
+                ];
+                date_default_timezone_set('Asia/Jakarta');
+                $transaksi = [
+                    'nota' => $nota,
+                    'id_booking' => $id_booking,
+                    'tanggal' => $tanggal,
+                    'total' => $harga,
+                    'metode' => $metode,
+                    'statuss' => 'Belum',
+                    'date_tr' => time()
+                ];
+                $pesan = "Selamat anda sudah berhasil membooking <b>Lapangan ". $this->session->userdata('jenis_lapangan') ."</b> di BCL Futsal. Jangan lupa datang tepat waktu ya!<br><b>Junjung tinggi Sportifitas</b>";
+                $notif = [
+                    'id_pelanggan' => $id_pelanggan,
+                    'id_user' => $data['user']['id'],
+                    'statuss' => 'Belum',
+                    'pesan' => $pesan,
+                    'jam' => time(),
+                ];
+                $this->modelfutsal->insert('pelanggan', $pelanggan);
+                $this->modelfutsal->insert('notif', $notif);
+                $this->modelfutsal->insert('booking', $booking);
+                $this->modelfutsal->insert('transaksi', $transaksi);
+                $this->session->unset_userdata('jenis_lapangan');
+                $this->session->unset_userdata('jam_mulai');
+                $this->session->unset_userdata('tanggal');
+                $this->session->unset_userdata('harga');
+                redirect('home/detailBooking/' . $id_pelanggan);
+            }else{
+                $this->session->set_flashdata('message', '<div class="alert-message-eror" role="alert"><i class="fas fa-info-circle"></i> Harap Isi Form Dengan Benar</div>');
+                redirect('home/detailBookingLapangan/' . $this->session->userdata('id_lapangan2'));
+            }
+        }else{
+            $this->session->set_flashdata('message', '<div class="alert-message-eror" role="alert"><i class="fas fa-info-circle"></i> Harap Isi Form Dengan Benar</div>');
+            redirect('home/detailBookingLapangan/' . $this->session->userdata('id_lapangan2'));
+        }
+    }
 }

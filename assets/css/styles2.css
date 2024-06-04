@@ -1,0 +1,262 @@
+main.main {
+	padding: 2rem 2rem 9rem 2rem;
+	padding-top: 13rem;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 90%;
+	gap: 5rem;
+}
+.venue .header-venue {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 1.2rem;
+}
+.venue .header-venue h1 {
+	font-size: 2.5rem;
+	color: #081c15;
+}
+.venue .header-venue p {
+	width: 85%;
+	margin: auto;
+	font-size: 1.3rem;
+}
+
+.menu-venue ul {
+	display: flex;
+	width: 100%;
+	position: relative;
+	overflow: auto;
+	justify-content: center;
+	align-items: center;
+	gap: 10rem;
+	padding: 1rem;
+	border-top: 2px solid rgba(0, 0, 0, 0.444);
+	border-bottom: 2px solid rgba(0, 0, 0, 0.444);
+}
+.menu-venue ul li span {
+	font-size: 1.2rem;
+	font-weight: 500;
+	color: #081c15a7;
+	transition: all 0.5s ease;
+	cursor: pointer;
+}
+.menu-venue ul li span:hover {
+	color: white;
+}
+.body-venue {
+	width: 100%;
+	padding-inline: 2.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+.body-venue .venues-lapangan {
+	display: flex;
+	width: 100%;
+	gap: 3rem;
+}
+.body-venue .venues-lapangan a{
+	display: block;
+}
+.venues-lapangan .card-lapangan {
+	width: 35%;
+	background-color: #ffffff;
+	border-radius: 20px;
+	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+	display: flex;
+	
+	flex-direction: column;
+}
+.body-venue .venues-lapangan .card-lapangan .card-img-lp {
+	width: 100%;
+}
+.body-venue .venues-lapangan .card-lapangan .card-img-lp img {
+	width: 100%;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	min-width: 180px;
+}
+
+.venues-lapangan .card-lapangan .card-text {
+	padding: 1.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	gap: 1rem;
+	flex-direction: column;
+}
+
+.venues-lapangan .card-lapangan .card-text h1 {
+	font-size: 1.3rem;
+	color: black;
+}
+.venues-lapangan .card-lapangan .card-text p {
+	font-size: 1.1rem;
+	font-weight: 500;
+	color: rgba(0, 0, 0, 0.493);
+}
+
+.venues-lapangan .card-lapangan .card-text a.tombol {
+	padding: 1rem 2rem;
+	color: white;
+	background-color: #52b788;
+	border-radius: 10px;
+	font-weight: 600;
+	transition: all 0.5s ease;
+}
+.venues-lapangan .card-lapangan .card-text a.tombol:hover {
+	background-color: #72ffbd;
+	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.venues-lapangan .card-lapangan .card-text a.tombol:active {
+	scale: 0.8;
+}
+
+div.about {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 0;
+	gap: 3rem;
+}
+.t-hadir article h3{
+	font-size: 1.4rem;
+}
+.t-hadir article p, .t-hadir article ol {
+	font-size: 1.1rem;
+}
+#venue-about, #rules, #venue-gambar-fasilitas, #jam-operasional{
+	display: none;
+}
+
+.none-venue{
+	display: none!important;
+}
+.hadir-venue{
+	display: flex!important;
+	flex-direction: column;
+	
+}
+.hadir-venue-menu{
+	color: white !important;
+}
+.about section {
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+.about section article {
+	color: #ffffff;
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	line-height: 1.8rem;
+	border-radius: 10px;
+	box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+		rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.row-img-fasilitas{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 2rem;
+	flex-wrap: wrap;
+}
+.row-img-fasilitas .card-img-fasilitas{
+	width: 30%;
+	min-width: 273px;
+	border-radius: 10px;
+}
+.row-img-fasilitas .card-img-fasilitas img{
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	height: 300px;
+	width: 100%;
+	border-radius: 10px;
+}
+
+.about aside {
+	width: 30%;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+ol.rules {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	list-style-type: decimal;
+	font-size: 1.1rem;
+}
+aside table {
+	width: 100%;
+	text-align: center;
+	box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+		rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+aside table thead {
+	background-color: #52b788;
+	color: #ffffff;
+}
+aside table thead tr th {
+	padding: 1rem;
+}
+
+aside table tbody tr td {
+	padding: 1rem;
+	background-color: #ffffff;
+}
+.tutor {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 2rem;
+	width: 100%;
+}
+.tutor h1 {
+	font-size: 1.7rem;
+}
+.tutor .row-tutor {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 100%;
+	/* min-width: 400px; */
+	gap: 2rem;
+	padding: 1rem;
+}
+.tutor .row-tutor .card-tutor {
+	width: 40%;
+	height: 389px;
+	display: flex;
+	flex-direction: column;
+	gap: 1.2rem;
+	padding: 1.5rem;
+	border-radius: 20px;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+div.d-hadir{
+	display: block;
+}
+
+.tutor .row-tutor .card-tutor .card-tutor-header h1 {
+	font-size: 4rem;
+	color: #52b788;
+}
+.tutor .row-tutor .card-tutor .card-tutor-header h3 {
+	font-size: 1.4rem;
+}
+
+.tutor .row-tutor .card-tutor .card-tutor-body p {
+	font-size: 1.2rem;
+}
