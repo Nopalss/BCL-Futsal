@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/styles3.css') ?>"> -->
     <link href="<?= base_url('assets/'); ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <!-- <link href="<?= base_url('assets/'); ?>css/sb-admin-2.min.css" rel="stylesheet"> -->
-
+    <link rel="icon" type="image/png" href="<?= base_url('assets/img/'); ?>logo.png" />
     <!-- Custom styles for this template-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
