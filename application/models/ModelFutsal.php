@@ -21,10 +21,11 @@ class ModelFutsal extends CI_Model
         $this->db->delete($table);
     }
     public function getMyBooking($id){
-        $query = "SELECT booking.*, user.id AS id_user, pelanggan.id AS id_pelanggan FROM booking 
+        $query = "SELECT booking.*, user.id AS id_user, pelanggan.id AS id_pelanggan, transaksi.date_tr AS date_tr FROM booking 
                 JOIN pelanggan ON booking.id_pelanggan = pelanggan.id
+                JOIN transaksi ON booking.id = transaksi.id_booking
                 JOIN user ON pelanggan.id_user = user.id
-                WHERE user.id =$id";
+                WHERE user.id =$id AND transaksi.status2 != 'Batal'";
         return $this->db->query($query)->result_array();     
     }
     public function get_where($table, $id)
@@ -51,7 +52,7 @@ class ModelFutsal extends CI_Model
     public function auto_idbooking()
     {
         $this->db->select('RIGHT(id,3) as idBooking', false);
-        $this->db->order_by("id", "DESC");
+        $this->db->order_by("idBooking", "DESC");
         $this->db->limit(1);
         $query = $this->db->get('booking');
 
@@ -74,7 +75,7 @@ class ModelFutsal extends CI_Model
     public function auto_idpelanggan()
     {
         $this->db->select('RIGHT(id,4) as idPelanggan', false);
-        $this->db->order_by("id", "DESC");
+        $this->db->order_by("idPelanggan", "DESC");
         $this->db->limit(1);
         $query = $this->db->get('pelanggan');
 
@@ -112,6 +113,24 @@ class ModelFutsal extends CI_Model
         $newId  = $wordId . $newTanggal . $numberId;
         return $newId;
     }
+    public function auto_idAkun()
+    {
+        $this->db->select('RIGHT(id,3) as idAkun', false);
+        $this->db->order_by("idAkun", "DESC");
+        $this->db->limit(1);
+        $query = $this->db->get('user');
+
+        if ($query->num_rows() <> 0) {
+            $data = $query->row();
+            $id = intval($data->idAkun) + 1;
+        } else {
+            $id  = 1;
+        }
+        $numberId = str_pad($id, 4, "0", STR_PAD_LEFT);
+        $wordId = "A";
+        $newId  = $wordId . $numberId;
+        return $newId;
+    }
     public function auto_idlaporanH()
     {
         $wordId = "LH";
@@ -125,7 +144,7 @@ class ModelFutsal extends CI_Model
     public function auto_idlaporanB()
     {
         $wordId = "LB";
-        $y = date('y');
+        $y = date('Y');
         $m = date('m');
         $newTanggal = $y . $m;
         $newId  = $wordId . $newTanggal;
@@ -148,7 +167,7 @@ class ModelFutsal extends CI_Model
         return $this->db->query($query)->result_array();
     }  
     public function get_pendapatan($tanggal){
-        $query = "SELECT SUM(total) as pendapatan FROM transaksi WHERE tanggal = '$tanggal'";
+        $query = "SELECT SUM(total) as pendapatan FROM transaksi WHERE tanggal = '$tanggal' AND status2 != 'Batal'";
         return $this->db->query($query)->row_array();
     }
     public function seleksiJ($jam, $tanggal){
@@ -161,7 +180,7 @@ class ModelFutsal extends CI_Model
             $pecah = explode('-', $jam);
             $pecah = explode(':', $pecah[0]);
             // jika jam yang ingin di booking sudah lewat maka mengembalikan false
-            if($js > $pecah[0] ){
+            if(intval($js) == intval($pecah[0]) || intval($js) > intval($pecah[0])){
                 return false;
             }else{// jika tidak true
                 return true;
@@ -171,7 +190,7 @@ class ModelFutsal extends CI_Model
         }
     }
     public function cek_booking($id_lapangan, $jam_mulai, $tanggal){
-        $query = "SELECT * FROM booking WHERE id_lapangan = $id_lapangan AND jam_mulai = '$jam_mulai' AND tanggal = '$tanggal'";
+        $query = "SELECT * FROM booking WHERE id_lapangan = $id_lapangan AND jam_mulai = '$jam_mulai' AND tanggal = '$tanggal' AND status2 != 'Batal'";
         return $this->db->query($query)->row_array();
     }
     public function jam_lapor(){
@@ -187,20 +206,20 @@ class ModelFutsal extends CI_Model
     }
     public function get_lapangan($tanggal, $lapangan){
         $query = "SELECT transaksi.nota as nota, booking.jam_mulai as jam, transaksi.total as total FROM transaksi 
-                JOIN booking ON transaksi.id_booking = booking.id WHERE transaksi.tanggal = '$tanggal' AND booking.id_lapangan = '$lapangan' AND booking.status ='Lunas'";
+                JOIN booking ON transaksi.id_booking = booking.id WHERE transaksi.tanggal = '$tanggal' AND booking.id_lapangan = '$lapangan' AND booking.status ='Lunas' AND booking.status2 != 'Batal'";
         return $this->db->query($query)->result_array();
     }
     public function get_pemakaiLapangan($tanggal,$lapangan){
         $query = "SELECT COUNT(transaksi.nota) as pemakaian FROM transaksi 
-                JOIN booking ON transaksi.id_booking = booking.id WHERE transaksi.tanggal LIKE '%$tanggal%' AND booking.id_lapangan = $lapangan AND booking.status ='Lunas'";
+                JOIN booking ON transaksi.id_booking = booking.id WHERE transaksi.tanggal LIKE '%$tanggal%' AND booking.id_lapangan = $lapangan AND booking.status ='Lunas' AND booking.status2 != 'Batal'";
         return $this->db->query($query)->row_array();
     }
     public function get_pendapatanLapangan($tanggal,$sr, $ss){
         $standar = "SELECT SUM(transaksi.total) as pendapatan FROM transaksi 
-                JOIN booking ON transaksi.id_booking = booking.id WHERE transaksi.tanggal LIKE '%$tanggal%' AND booking.id_lapangan = '$sr' AND booking.status ='Lunas'";
+                JOIN booking ON transaksi.id_booking = booking.id WHERE transaksi.tanggal LIKE '%$tanggal%' AND booking.id_lapangan = '$sr' AND booking.status ='Lunas' AND booking.status2 != 'Batal'";
         $standar = $this->db->query($standar)->row_array();
         $sintetis = "SELECT SUM(transaksi.total) as pendapatan FROM transaksi 
-                JOIN booking ON transaksi.id_booking = booking.id WHERE transaksi.tanggal LIKE '%$tanggal%' AND booking.id_lapangan = '$ss' AND booking.status ='Lunas'";
+                JOIN booking ON transaksi.id_booking = booking.id WHERE transaksi.tanggal LIKE '%$tanggal%' AND booking.id_lapangan = '$ss' AND booking.status ='Lunas' AND booking.status2 != 'Batal'";
         $sintetis = $this->db->query($sintetis)->row_array();
         return [$standar['pendapatan'], $sintetis['pendapatan']];
     }
@@ -238,7 +257,7 @@ class ModelFutsal extends CI_Model
     }
     public function get_pendapatan_bulan(){
         $y= date('Y');
-        $query = "SELECT * FROM laporan_bulan WHERE tanggal LIKE '%$y%'";
+        $query = "SELECT * FROM laporan_bulan WHERE tanggal LIKE '%$y%' ORDER BY tanggal ASC";
         return $this->db->query($query)->result_array();
     }
     public function get_comment($id){
@@ -251,5 +270,13 @@ class ModelFutsal extends CI_Model
                 JOIN pelanggan ON booking.id_pelanggan = pelanggan.id
                 WHERE booking.id_pelanggan = '$pelanggan'";
         return $this->db->query($query)->row_array();
+    }
+    public function get_jam_booking($tanggal,$lapangan){
+        $query = "SELECT * FROM booking WHERE tanggal = '$tanggal' AND id_lapangan = $lapangan AND status2 != 'Batal'";
+        return $this->db->query($query)->result_array();
+    }
+    public function get_notif($id){
+        $query = "SELECT * FROM notif WHERE id_user = '$id' ORDER BY jam ASC";
+        return $this->db->query($query)->result_array();
     }
 }

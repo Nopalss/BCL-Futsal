@@ -14,7 +14,11 @@
                                 <th>Status</th>
                                 <th class="p-2"></th>
                                 <td>
-                                    <h3 class="badge badge-pill badge-success">Lunas <i class="far fa-check-circle"></i></h3>
+                                    <?php if($transaksi['status2'] == 'Batal'): ?>
+                                        <h3 class="badge badge-pill badge-danger">pengembalian <i class="far fa-check-circle"></i></h3>
+                                        <?php else: ?>
+                                            <h3 class="badge badge-pill badge-success">Lunas <i class="far fa-check-circle"></i></h3>
+                                    <?php endif ?>
                                 </td>
                             </tr>
                             <tr>

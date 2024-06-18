@@ -10,7 +10,7 @@
             </div>
             <div class="grup-input">
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name" value="<?= $user['name']?>" maxlength="50" minlength="4"  required>
+                <input type="text" name="name" id="name" value="<?= $user['name']?>" maxlength="15" minlength="4"  required>
             </div>
             <div class="grup-input">
                 <label for="No Telepon">No Telepon</label>

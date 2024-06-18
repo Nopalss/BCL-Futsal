@@ -135,8 +135,8 @@
     </div>
     <div class="row justify-content-center mt-2">
         <a href="<?= base_url('laporan/laporanBulanan')?>" class="btn btn-primary mr-1"><i class="fas fa-arrow-left"></i></a>
-        <a href="<?= base_url('laporan/pdflaporanBulanan/'). $laporan['id_laporanB']?>" class="btn btn-danger mr-1"><i class="fas fa-file-pdf"></i></a>
-        <a href="<?= base_url('laporan/excellaporanBulanan/'). $laporan['id_laporanB']?>" class="btn btn-success mr-1"><i class="fas fa-file-excel"></i></a>
+        <a href="<?= base_url('laporan/pdfDetailLb/'). $laporan['id_laporanB']?>" class="btn btn-danger mr-1"><i class="fas fa-file-pdf"></i></a>
+        <a href="<?= base_url('laporan/detailexcelLb/'). $laporan['id_laporanB']?>" class="btn btn-success mr-1"><i class="fas fa-file-excel"></i></a>
     </div>
 </div>
 

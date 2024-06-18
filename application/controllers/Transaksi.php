@@ -5,7 +5,11 @@ class Transaksi extends CI_Controller
 {
     public function index(){
         $data['title'] = 'Transaksi';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        if ($this->session->userdata('roll_id') == 4 || $this->session->userdata('roll_id') == 3) {
+            redirect('auth/blocked');
+        } else {
+            $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        }
         $data['booking'] = $this->modelfutsal->get('booking');
         $data['transaksi'] = $this->modelfutsal->get('transaksi');
         $this->load->view('templates/header', $data);
@@ -17,7 +21,11 @@ class Transaksi extends CI_Controller
 
     public function tambahTransaksi(){
         $data['title'] = 'Tambah Transaksi';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        if ($this->session->userdata('roll_id') == 4 || $this->session->userdata('roll_id') == 3) {
+            redirect('auth/blocked');
+        } else {
+            $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        }
         $data['booking'] = $this->modelfutsal->get_where('booking', ['status' => 'Booking']);
         $data['nota'] = $this->modelfutsal->auto_nota();
         $this->form_validation->set_rules('id_booking', 'Id Booking', 'required', ['required' => 'Id Booking Wajib Diisi!']);
@@ -45,7 +53,9 @@ class Transaksi extends CI_Controller
                 'tanggal' => $tanggal,
                 'total' => $total,
                 'metode' => 'Pembayaran Langsung',
-                'statuss' => 'Belum'
+                'statuss' => 'Belum',
+                'date_tr' => time(),
+                'status2' => 'Sukses',
             ];
             $status = [
                 'status' => 'Lunas'
@@ -59,7 +69,11 @@ class Transaksi extends CI_Controller
     }
     public function detailTransaksi($nota){
         $data['title'] = 'Detail Transaksi';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        if ($this->session->userdata('roll_id') == 4 || $this->session->userdata('roll_id') == 3) {
+            redirect('auth/blocked');
+        } else {
+            $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        }
         $data['transaksi'] = $this->db->get_where('transaksi', ['nota' => $nota])->row_array();			 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -107,6 +121,7 @@ class Transaksi extends CI_Controller
                     'jam_mulai' => $jam_mulai,
                     'status' => 'Lunas',
                     'harga' => $harga, 
+                    'status2' => 'Sukses'
                 ];
                 $pelanggan = [
                     'id' => $id_pelanggan,
@@ -122,7 +137,8 @@ class Transaksi extends CI_Controller
                     'total' => $harga,
                     'metode' => $metode,
                     'statuss' => 'Belum',
-                    'date_tr' => time()
+                    'date_tr' => time(),
+                    'status2' => 'Sukses',
                 ];
                 $pesan = "Selamat anda sudah berhasil membooking <b>Lapangan ". $this->session->userdata('jenis_lapangan') ."</b> di BCL Futsal. Jangan lupa datang tepat waktu ya!<br><b>Junjung tinggi Sportifitas</b>";
                 $notif = [
@@ -131,6 +147,7 @@ class Transaksi extends CI_Controller
                     'statuss' => 'Belum',
                     'pesan' => $pesan,
                     'jam' => time(),
+                    'status2' => 'Sukses',
                 ];
                 $this->modelfutsal->insert('pelanggan', $pelanggan);
                 $this->modelfutsal->insert('notif', $notif);

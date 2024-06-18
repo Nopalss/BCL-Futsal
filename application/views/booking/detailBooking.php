@@ -26,8 +26,8 @@
                                 <h3><?= $booking['id_pelanggan']; ?></h3>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <table class="table table-striped table-responsive-lg">
+                        <div class="card-body overflow-hidden">
+                            <table class="table table-striped w-100 ">
                                 <tbody>
                                     <tr>
                                         <th>Nama Pelanggan</th>
@@ -57,6 +57,9 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <a href="<?= base_url('booking/printBooking/'). $id_booking ?>" class="btn btn-danger col-md-1 mt-2 w-100"><i class="fas fa-print"></i></a>
                     </div>
                 </div>
             </div>

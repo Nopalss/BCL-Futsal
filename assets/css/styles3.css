@@ -1,17 +1,17 @@
-main.dl{
-    gap: 2rem;
+main.dl {
+	gap: 2rem;
 }
-.info-login{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    padding: 1.3rem;
-    background-color: #99e69e;
-    border-radius: 10px;
-    align-items: center;
-    position: relative;
+.info-login {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	padding: 1.3rem;
+	background-color: #99e69e;
+	border-radius: 10px;
+	align-items: center;
+	position: relative;
 }
-.alert-message-eror{
+.alert-message-eror {
 	background-color: red;
 	padding: 1rem 2rem;
 	position: fixed;
@@ -26,227 +26,226 @@ main.dl{
 	animation-timing-function: ease;
 	cursor: pointer;
 }
-@keyframes notif{
-	0%{right: -500px; }
-	100%{right: 10px;}
+@keyframes notif {
+	0% {
+		right: -500px;
+	}
+	100% {
+		right: 10px;
+	}
 }
 
-.info-login p{
-    font-size: 1.1rem;
+.info-login p {
+	font-size: 1.1rem;
 }
-.info-login a{
-    padding: 0.7rem 2rem;
-    background-color: #409b71;
-    border-radius: 10px;
-    color: white;
-    font-weight: 600;
-    transition: all .50s ease;
-}
-.info-login a:active{
-    scale: 0.8;
-}
-
-.info-login i{
-    position: absolute;
-    top: -15px;
-    right: -15px;
-    font-size: 1.3rem;
-    padding: 0.7rem;
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    cursor: pointer;
-}
-.d-none{
-    display: none!important;
-}
-.header-detail-lapangan{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-}
-.header-detail-lapangan .detail-img{
-    width: 100%;
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    align-items: center;
-    
-}
-.header-detail-lapangan .detail-img img{
-    height: 500px;
-    /* width: 78%; */
-    flex-grow: 6;
-    /* object-fit: cover; */
-    /* object-position: center; */
-    min-height: 250px;
-    border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-}
-
-.header-detail-lapangan .detail-img .detail-harga{
-    flex-grow: 3;
-    padding: 5rem 2rem;
-    background-color: #99e69e;
-    display: flex;
-    flex-direction: column;
-    border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
-}
-.header-detail-lapangan .detail-img .detail-harga p {
-    color: #ffffffc0;
-    font-weight: 600;
-    font-size: 1.2rem;
-}
-.header-detail-lapangan .detail-img .detail-harga h1 {
-    font-size: 2.4rem;
-
-}
-
-.header-detail-lapangan .detail-judul h1{
-    font-size: 2.5rem;
-    color: #103327;
-}
-.header-detail-lapangan .detail-judul p{
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: #52b788;
-}
-
-.body-detail-lapangan{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-}
-
-.body-detail-lapangan .form-row{
-    display: flex;
-    justify-content: space-between;
-
-}
-.body-detail-lapangan .form-row .form{
-    display: flex;
-    flex-direction: column;
-    gap: 1.3rem;
-}
-.body-detail-lapangan .form-row .form form{
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-.body-detail-lapangan .form-row .form input[type="date"]{
-    padding: 0.7rem 2rem;
-    border: none;
-    font-size: 1.1rem;
-    border-radius: 10px;
-    color: #99e69e;
-    font-weight: 700;
-    outline: none;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
-}
-button[type="submit"]{
-    padding: 0.5rem 2rem;
-    border: none;
-    outline: none;
-    color: white;
-    background-color: #409b71;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    transition: all .50s ease;
-}
-button[type="submit"]:active{
-    scale: 0.8;
-}
-::-webkit-calendar-picker-indicator{
-    cursor: pointer;
-    color: #99e69e;
-    padding: 0.5rem;
-    border-radius: 50%;
-    background-color: #99e69e;
-}
-.body-detail-lapangan form.form-jam-booking{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.row-jam-booking{
-    width: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-.row-jam-booking .card-radio{
-    width: 10rem;
-    height: 10rem;
-    /* background-color: #99e69e; */
-    position: relative;
-}
-.row-jam-booking .card-radio input{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    cursor: pointer;
-    z-index: 3;
-    opacity: 0;
-}
-.card-radio .body-radio{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    height: 100%;
-    gap: 1rem;
-    border-radius: 10px;
-    transition: all .50s ease;
-}
-.card-radio .body-radio label{
-    font-size: 1.17rem;
-    font-weight: 700;
-}
-.card-radio .body-radio p{
-    font-weight: 700;
-    color: #0000008d;
-}
-.row-jam-booking .booked{
-    background-color: #00000032;
+.info-login a {
+	padding: 0.7rem 2rem;
+	background-color: #409b71;
 	border-radius: 10px;
+	color: white;
+	font-weight: 600;
+	transition: all 0.5s ease;
 }
-
-.row-jam-booking .booked .body-radio label{
-	color: rgba(255, 255, 255, 0.527);
-}
-.row-jam-booking .booked .body-radio p{
-	color: #2d572f;
-}
-input[type="radio"]:checked + .body-radio{
-    background-color: #52b788;
-    color: white;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.603);
-}
-input[type="radio"]:hover + .body-radio{
-    background-color: #52b788;
-    color: white;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.723);
-}
-input[type="radio"]:active + .body-radio{
+.info-login a:active {
 	scale: 0.8;
 }
 
-.lanjut-pembayaran{
+.info-login i {
+	position: absolute;
+	top: -15px;
+	right: -15px;
+	font-size: 1.3rem;
+	padding: 0.7rem;
+	background-color: red;
+	color: white;
+	border-radius: 50%;
+	cursor: pointer;
+}
+.d-none {
+	display: none !important;
+}
+.header-detail-lapangan {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 3rem;
+}
+.header-detail-lapangan .detail-img {
+	width: 100%;
+	display: flex;
+	gap: 2rem;
+	justify-content: center;
+	align-items: center;
+}
+.header-detail-lapangan .detail-img img {
+	height: 500px;
+	/* width: 78%; */
+	flex-grow: 6;
+	/* object-fit: cover; */
+	/* object-position: center; */
+	min-height: 250px;
+	border-radius: 20px;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.header-detail-lapangan .detail-img .detail-harga {
+	flex-grow: 3;
+	padding: 5rem 2rem;
+	background-color: #99e69e;
+	display: flex;
+	flex-direction: column;
+	border-radius: 20px;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.header-detail-lapangan .detail-img .detail-harga p {
+	color: #ffffffc0;
+	font-weight: 600;
+	font-size: 1.2rem;
+}
+.header-detail-lapangan .detail-img .detail-harga h1 {
+	font-size: 2.4rem;
+}
+
+.header-detail-lapangan .detail-judul h1 {
+	font-size: 2.5rem;
+	color: #103327;
+}
+.header-detail-lapangan .detail-judul p {
+	font-size: 1.5rem;
+	font-weight: 500;
+	color: #52b788;
+}
+
+.body-detail-lapangan {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 3rem;
+}
+
+.body-detail-lapangan .form-row {
+	display: flex;
+	justify-content: space-between;
+}
+.body-detail-lapangan .form-row .form {
+	display: flex;
+	flex-direction: column;
+	gap: 1.3rem;
+}
+.body-detail-lapangan .form-row .form form {
+	display: flex;
+	gap: 2rem;
+	flex-wrap: wrap;
+}
+
+.body-detail-lapangan .form-row .form input[type="date"] {
+	padding: 0.7rem 2rem;
+	border: none;
+	font-size: 1.1rem;
+	border-radius: 10px;
+	color: #99e69e;
+	font-weight: 700;
+	outline: none;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+button[type="submit"] {
+	padding: 0.5rem 2rem;
+	border: none;
+	outline: none;
+	color: white;
+	background-color: #409b71;
+	border-radius: 10px;
+	font-size: 1.1rem;
+	font-weight: 700;
+	cursor: pointer;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	transition: all 0.5s ease;
+}
+button[type="submit"]:active {
+	scale: 0.8;
+}
+::-webkit-calendar-picker-indicator {
+	cursor: pointer;
+	color: #99e69e;
+	padding: 0.5rem;
+	border-radius: 50%;
+	background-color: #99e69e;
+}
+.body-detail-lapangan form.form-jam-booking {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.row-jam-booking {
+	width: 80%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+.row-jam-booking .card-radio {
+	width: 10rem;
+	height: 10rem;
+	/* background-color: #99e69e; */
+	position: relative;
+}
+.row-jam-booking .card-radio input {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	cursor: pointer;
+	z-index: 3;
+	opacity: 0;
+}
+.card-radio .body-radio {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	height: 100%;
+	gap: 1rem;
+	border-radius: 10px;
+	transition: all 0.5s ease;
+}
+.card-radio .body-radio label {
+	font-size: 1.17rem;
+	font-weight: 700;
+}
+.card-radio .body-radio p {
+	font-weight: 700;
+	color: #0000008d;
+}
+.row-jam-booking .booked {
+	background-color: #00000032;
+	border-radius: 10px;
+}
+
+.row-jam-booking .booked .body-radio label {
+	color: rgba(255, 255, 255, 0.527);
+}
+.row-jam-booking .booked .body-radio p {
+	color: #2d572f;
+}
+input[type="radio"]:checked + .body-radio {
+	background-color: #52b788;
+	color: white;
+	box-shadow: 0 0 12px rgba(0, 0, 0, 0.603);
+}
+input[type="radio"]:hover + .body-radio {
+	background-color: #52b788;
+	color: white;
+	box-shadow: 0 0 12px rgba(0, 0, 0, 0.723);
+}
+input[type="radio"]:active + .body-radio {
+	scale: 0.8;
+}
+
+.lanjut-pembayaran {
 	z-index: 90;
 	position: fixed;
 	bottom: -500px;
@@ -260,18 +259,18 @@ input[type="radio"]:active + .body-radio{
 	transition: all 300ms ease;
 }
 
-.lanjut-pembayaran .tombol-lanjut-pembayaran{
+.lanjut-pembayaran .tombol-lanjut-pembayaran {
 	width: 80%;
 }
-.lanjut-pembayaran .tombol-lanjut-pembayaran button[type="submit"]{
+.lanjut-pembayaran .tombol-lanjut-pembayaran button[type="submit"] {
 	width: 100%;
 	font-size: 1.3rem;
 }
-div.b-hadir{
+div.b-hadir {
 	bottom: 0;
 }
 
-.row-comment-tutor{
+.row-comment-tutor {
 	display: flex;
 	width: 100%;
 	gap: 1.5rem;
@@ -279,7 +278,7 @@ div.b-hadir{
 	margin-top: 6rem;
 }
 
-.row-comment-tutor .container-comment{
+.row-comment-tutor .container-comment {
 	background-color: white;
 	border-radius: 8px;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -290,64 +289,88 @@ div.b-hadir{
 	gap: 2rem;
 	justify-content: space-between;
 }
-.row-comment-tutor .container-comment .row-comment h4{
+.row-comment-tutor .container-comment .row-comment h4 {
 	font-size: 1.4rem;
 }
-.row-comment-tutor .container-comment .row-comment{
+.row-comment-tutor .container-comment .row-comment {
 	display: flex;
 	width: 100%;
 	gap: 2.4rem;
 	flex-direction: column;
 }
-.row-comment-tutor .container-comment .row-comment .card-comment{
+.row-comment-tutor .container-comment .row-comment .card-comment {
 	width: 100%;
 	display: flex;
 	gap: 1rem;
 }
-.row-comment-tutor .container-comment .row-comment .card-comment img{
+.row-comment-tutor .container-comment .row-comment .card-comment img {
 	width: 53px;
 	height: 53px;
 	border-radius: 50%;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.row-comment-tutor .container-comment .row-comment .card-comment .content-comment{
+.row-comment-tutor
+	.container-comment
+	.row-comment
+	.card-comment
+	.content-comment {
 	display: flex;
 	width: 100%;
 	flex-direction: column;
 	gap: 0.5rem;
 }
-.row-comment-tutor .container-comment .row-comment .card-comment .content-comment h3{
+.row-comment-tutor
+	.container-comment
+	.row-comment
+	.card-comment
+	.content-comment
+	h3 {
 	font-size: 1.3rem;
-
 }
-.row-comment-tutor .container-comment .row-comment .card-comment .content-comment .comment{
+.row-comment-tutor
+	.container-comment
+	.row-comment
+	.card-comment
+	.content-comment
+	.comment {
 	display: flex;
 	flex-direction: column;
 	background-color: #99e69e;
 	border-radius: 38px;
-	gap: .6rem;
+	gap: 0.6rem;
 	padding: 0.5rem 1.1rem;
 }
-.row-comment-tutor .container-comment .row-comment .card-comment .content-comment .comment p{
+.row-comment-tutor
+	.container-comment
+	.row-comment
+	.card-comment
+	.content-comment
+	.comment
+	p {
 	font-size: 1.1rem;
 	font-weight: 500;
 }
-.row-comment-tutor .container-comment .row-comment .card-comment .content-comment .comment span{
+.row-comment-tutor
+	.container-comment
+	.row-comment
+	.card-comment
+	.content-comment
+	.comment
+	span {
 	font-size: 1rem;
 	text-align: right;
 	font-weight: 500;
 	color: #00000084;
 }
-.row-comment-tutor .container-comment form{
+.row-comment-tutor .container-comment form {
 	width: 100%;
 }
-.row-comment-tutor .container-comment form .input-comment{
+.row-comment-tutor .container-comment form .input-comment {
 	width: 100%;
 	display: flex;
 	gap: 0.5rem;
-
 }
-.row-comment-tutor .container-comment form .input-comment input[type="text"]{
+.row-comment-tutor .container-comment form .input-comment input[type="text"] {
 	width: 95%;
 	border: none;
 	outline: none;
@@ -358,8 +381,11 @@ div.b-hadir{
 	font-size: 1.1rem;
 }
 
-.row-comment-tutor .container-comment form .input-comment button[type="submit"]{
-	
+.row-comment-tutor
+	.container-comment
+	form
+	.input-comment
+	button[type="submit"] {
 	border: none;
 	outline: none;
 	padding: 1rem;
@@ -367,11 +393,15 @@ div.b-hadir{
 	border-radius: 50%;
 }
 
-.row-comment-tutor .container-comment form .input-comment button[type="submit"]:active{
+.row-comment-tutor
+	.container-comment
+	form
+	.input-comment
+	button[type="submit"]:active {
 	scale: 0.8;
 }
 
-.row-comment-tutor .container-tutor{
+.row-comment-tutor .container-tutor {
 	width: 33%;
 	/* background-color: #081c15; */
 	padding: 1rem;
@@ -379,7 +409,7 @@ div.b-hadir{
 	flex-direction: column;
 	gap: 1.5rem;
 }
-.row-comment-tutor .container-tutor .card-tutor2{
+.row-comment-tutor .container-tutor .card-tutor2 {
 	width: 100%;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	padding: 2rem;
@@ -388,35 +418,33 @@ div.b-hadir{
 	flex-direction: column;
 	gap: 0.5rem;
 }
-.row-comment-tutor .container-tutor .card-tutor2 h1{
+.row-comment-tutor .container-tutor .card-tutor2 h1 {
 	font-size: 2.5rem;
 	color: #52b788;
 }
-.row-comment-tutor .container-tutor .card-tutor2 h3{
+.row-comment-tutor .container-tutor .card-tutor2 h3 {
 	font-size: 1.2rem;
-	
 }
-.row-comment-tutor .container-tutor .card-tutor2 p{
+.row-comment-tutor .container-tutor .card-tutor2 p {
 	font-size: 0.9rem;
 	font-weight: 500;
 }
-.py form{
+.py form {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
 }
-.py form h1{
+.py form h1 {
 	font-size: 2.5rem;
 	text-align: center;
 }
-.py form .row-payment{
+.py form .row-payment {
 	display: flex;
 	gap: 2rem;
 	width: 100%;
-
 }
-.py form .row-payment .container-customer{
+.py form .row-payment .container-customer {
 	width: 50%;
 	padding: 2rem;
 	display: flex;
@@ -425,20 +453,21 @@ div.b-hadir{
 	border-radius: 10px;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.py form .row-payment .container-customer h3{
+.py form .row-payment .container-customer h3 {
 	font-size: 1.5rem;
 }
-.py form .row-payment .container-customer .grup-input{
+.py form .row-payment .container-customer .grup-input {
 	display: flex;
 	flex-direction: column;
 	gap: 0.6rem;
 }
 
-.py form .row-payment .container-customer .grup-input label{
+.py form .row-payment .container-customer .grup-input label {
 	font-size: 1.1rem;
 	font-weight: 500;
 }
-.py form .row-payment .container-customer .grup-input input[type="text"], .grup-input input[type="tel"]{
+.py form .row-payment .container-customer .grup-input input[type="text"],
+.grup-input input[type="tel"] {
 	border: none;
 	outline: none;
 	padding: 1rem;
@@ -446,17 +475,22 @@ div.b-hadir{
 	font-weight: 600;
 	border-radius: 10px;
 }
-.py form .row-payment .container-customer .grup-input input.readonly[type="text"]{
+.py
+	form
+	.row-payment
+	.container-customer
+	.grup-input
+	input.readonly[type="text"] {
 	background-color: rgba(255, 255, 255, 0.552);
 	color: rgba(0, 0, 0, 0.468);
 }
-.py form .row-payment .container-customer .grup-input small{
+.py form .row-payment .container-customer .grup-input small {
 	font-weight: 500;
 	color: red;
 	padding-left: 0.5rem;
 }
 
-.py form .row-payment .container-payment{
+.py form .row-payment .container-payment {
 	width: 50%;
 	padding: 2rem;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -465,34 +499,47 @@ div.b-hadir{
 	flex-direction: column;
 	gap: 2.9rem;
 }
-.py form .row-payment .container-payment .ket-payment h3{
+.py form .row-payment .container-payment .ket-payment h3 {
 	font-size: 1.5rem;
 	margin-bottom: 6px;
 }
-.py form .row-payment .container-payment .ket-payment p{
+.py form .row-payment .container-payment .ket-payment p {
 	font-size: 1rem;
 	font-weight: 600;
 	color: rgba(0, 0, 0, 0.4);
 }
 
-.py form .row-payment .container-payment .grup-payment{
+.py form .row-payment .container-payment .grup-payment {
 	display: flex;
 	flex-direction: column;
-	gap: .9rem;
+	gap: 0.9rem;
 }
-.py form .row-payment .container-payment .grup-payment .row-jenis-payment{
+.py form .row-payment .container-payment .grup-payment .row-jenis-payment {
 	display: flex;
 	width: 100%;
 	gap: 1.2rem;
 	flex-wrap: wrap;
 }
-.py form .row-payment .container-payment .grup-payment .row-jenis-payment .card-payment{
+.py
+	form
+	.row-payment
+	.container-payment
+	.grup-payment
+	.row-jenis-payment
+	.card-payment {
 	width: 110px;
 	height: 65px;
 	position: relative;
 	border-radius: 10px;
 }
-.py form .row-payment .container-payment .grup-payment .row-jenis-payment .card-payment input{
+.py
+	form
+	.row-payment
+	.container-payment
+	.grup-payment
+	.row-jenis-payment
+	.card-payment
+	input {
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -500,33 +547,72 @@ div.b-hadir{
 	opacity: 0;
 	cursor: pointer;
 }
-.py form .row-payment .container-payment .grup-payment .row-jenis-payment .card-payment .body-payment{
+.py
+	form
+	.row-payment
+	.container-payment
+	.grup-payment
+	.row-jenis-payment
+	.card-payment
+	.body-payment {
 	width: 100%;
 	height: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	border-radius: 10px;
-	transition: all .50s ease;
+	transition: all 0.5s ease;
 }
-.py form .row-payment .container-payment .grup-payment .row-jenis-payment .card-payment .body-payment img{
+.py
+	form
+	.row-payment
+	.container-payment
+	.grup-payment
+	.row-jenis-payment
+	.card-payment
+	.body-payment
+	img {
 	padding: 1.4rem;
 	border-radius: 10px;
 	width: 100%;
 	height: 100%;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.py form .row-payment .container-payment .grup-payment .row-jenis-payment .card-payment input[type="radio"]:checked + .body-payment{
+.py
+	form
+	.row-payment
+	.container-payment
+	.grup-payment
+	.row-jenis-payment
+	.card-payment
+	input[type="radio"]:checked
+	+ .body-payment {
 	background-color: #ffffff;
 	border: 3px solid #409b71;
 }
-.py form .row-payment .container-payment .grup-payment .row-jenis-payment .card-payment input[type="radio"]:hover + .body-payment{
+.py
+	form
+	.row-payment
+	.container-payment
+	.grup-payment
+	.row-jenis-payment
+	.card-payment
+	input[type="radio"]:hover
+	+ .body-payment {
 	background-color: #ffffff;
 }
-.py form .row-payment .container-payment .grup-payment .row-jenis-payment .card-payment input[type="radio"]:active + .body-payment{
+.py
+	form
+	.row-payment
+	.container-payment
+	.grup-payment
+	.row-jenis-payment
+	.card-payment
+	input[type="radio"]:active
+	+ .body-payment {
 	scale: 0.8;
 }
-.py form .container-pesanan{
+.py form .container-pesanan {
 	width: 100%;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	padding: 2rem;
@@ -535,31 +621,31 @@ div.b-hadir{
 	gap: 2rem;
 	border-radius: 10px;
 }
-.py form .container-pesanan .judul-pesanan{
+.py form .container-pesanan .judul-pesanan {
 	display: flex;
 	flex-direction: column;
-	gap: .3rem;
+	gap: 0.3rem;
 }
-.py form .container-pesanan .judul-pesanan h3{
+.py form .container-pesanan .judul-pesanan h3 {
 	font-size: 1.5rem;
 }
-.py form .container-pesanan .judul-pesanan p{
+.py form .container-pesanan .judul-pesanan p {
 	font-weight: 600;
 	color: #409b71;
 }
-.py form .container-pesanan .judul-pesanan  p.bcl{
+.py form .container-pesanan .judul-pesanan p.bcl {
 	color: #103327;
 }
-.py form .container-pesanan .judul-pesanan  p.bcl i{
+.py form .container-pesanan .judul-pesanan p.bcl i {
 	color: gold;
 }
-.container-pesanan .column-struk{
+.container-pesanan .column-struk {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
 }
-.container-pesanan .column-struk .row-struk{
+.container-pesanan .column-struk .row-struk {
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
@@ -569,22 +655,22 @@ div.b-hadir{
 	border-bottom: 2px solid rgba(128, 128, 128, 0.432);
 }
 
-.container-pesanan .column-struk .row-struk.none{
+.container-pesanan .column-struk .row-struk.none {
 	border: none;
 }
 
-.container-pesanan .column-struk .row-struk p{
+.container-pesanan .column-struk .row-struk p {
 	font-weight: 500;
 	/* font-size: 0.9rem; */
 	font-size: 1.1rem;
 }
 
-.container-pesanan .column-struk .row-struk.none p.total{
+.container-pesanan .column-struk .row-struk.none p.total {
 	font-size: 1.5rem;
 	font-weight: 600;
 	color: #409b71;
 }
-.content-button{
+.content-button {
 	position: fixed;
 	width: 100%;
 	left: 0;
@@ -595,7 +681,7 @@ div.b-hadir{
 	align-items: center;
 	z-index: 200;
 	gap: 1rem;
-	transition: all .50s ease ;
+	transition: all 0.5s ease;
 }
 .content-button .container-button {
 	background-color: #ffffff;
@@ -610,7 +696,7 @@ div.b-hadir{
 	gap: 1rem;
 	border-radius: 20px;
 }
-.content-button .container-button .harga-total{
+.content-button .container-button .harga-total {
 	display: flex;
 	justify-content: space-around;
 	width: 90%;
@@ -618,15 +704,15 @@ div.b-hadir{
 	font-weight: 700;
 	align-items: center;
 }
-.content-button .container-button .harga-total .p2{
+.content-button .container-button .harga-total .p2 {
 	font-size: 2rem;
 	color: #52b788;
 }
-.content-button .container-button button[type='submit']{
+.content-button .container-button button[type="submit"] {
 	width: 90%;
 	padding-block: 1rem;
 }
-.py .struk{
+.py .struk {
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -634,7 +720,7 @@ div.b-hadir{
 	gap: 5rem;
 	flex-direction: column;
 }
-.py .struk .container-struk{
+.py .struk .container-struk {
 	background-color: white;
 	width: 65%;
 	padding: 2rem;
@@ -642,7 +728,7 @@ div.b-hadir{
 	border-radius: 10px;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.py .struk .container-struk .head-struk{
+.py .struk .container-struk .head-struk {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -656,42 +742,42 @@ div.b-hadir{
 	position: relative;
 	width: 100%;
 }
-.bl .bulat{
-width: 30px;
-height: 30px;
-position: absolute;
-background-color: #D8F3DC;
-border-radius: 50%;
+.bl .bulat {
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	background-color: #d8f3dc;
+	border-radius: 50%;
 }
-.bl .satu{
+.bl .satu {
 	left: -45px;
 	bottom: -40px;
 }
-.bl .dua{
+.bl .dua {
 	right: -45px;
 	bottom: -40px;
 }
-.py .struk .container-struk .head-struk h1{
+.py .struk .container-struk .head-struk h1 {
 	font-size: 2.5rem;
 	color: #409b71;
 }
-.py .struk .container-struk .head-struk p{
+.py .struk .container-struk .head-struk p {
 	font-size: 1.1rem;
 	font-weight: 500;
 	color: rgba(0, 0, 0, 0.837);
 }
-.py .struk .container-struk .head-struk span{
+.py .struk .container-struk .head-struk span {
 	color: rgba(0, 0, 0, 0.593);
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: .4rem;
+	gap: 0.4rem;
 	font-size: 0.9rem;
 }
-.py .struk .container-struk .head-struk span i{
-	font-size: .5rem;
+.py .struk .container-struk .head-struk span i {
+	font-size: 0.5rem;
 }
-.bg-focus{
+.bg-focus {
 	position: absolute;
 	display: none;
 	top: 0;
@@ -699,7 +785,7 @@ border-radius: 50%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.377);
 }
-.py .container-struk .cheklis{
+.py .container-struk .cheklis {
 	position: absolute;
 	top: -40px;
 	width: 100%;
@@ -708,12 +794,12 @@ border-radius: 50%;
 	align-items: center;
 	left: 0;
 }
-.py .container-struk .cheklis .background{
+.py .container-struk .cheklis .background {
 	background-color: white;
 	padding: 0.5rem;
 	border-radius: 50%;
 }
-.py .container-struk .cheklis .background i{
+.py .container-struk .cheklis .background i {
 	background-color: #409b71;
 	color: white;
 	padding: 1rem;
@@ -722,63 +808,62 @@ border-radius: 50%;
 	animation-name: muncul;
 	animation-duration: 1s;
 }
-.container-struk .body-struk{
+.container-struk .body-struk {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
 	padding-bottom: 1.5rem;
 }
-.container-struk .body-struk .ket-struk{
+.container-struk .body-struk .ket-struk {
 	display: flex;
 	gap: 2.5rem;
 	align-items: center;
 	padding-block: 2rem;
 	border-bottom: 5px dashed rgba(0, 0, 0, 0.451);
 }
-.container-struk .body-struk .ket-struk i{
+.container-struk .body-struk .ket-struk i {
 	font-size: 4rem;
 	color: gold;
 }
-.container-struk .body-struk .ket-struk .column-struk{
+.container-struk .body-struk .ket-struk .column-struk {
 	display: flex;
 	flex-direction: column;
 	gap: 0.3rem;
 }
-.container-struk .body-struk .ket-struk .column-struk h1{
+.container-struk .body-struk .ket-struk .column-struk h1 {
 	font-size: 1.9rem;
 	font-weight: 600;
 }
-.container-struk .body-struk .ket-struk .column-struk p{
+.container-struk .body-struk .ket-struk .column-struk p {
 	font-weight: 600;
 	color: rgba(0, 0, 0, 0.658);
 }
-.container-struk .body-struk .grup-detail{
+.container-struk .body-struk .grup-detail {
 	display: flex;
 	justify-content: space-between;
 }
-.container-struk .body-struk .grup-detail p{
+.container-struk .body-struk .grup-detail p {
 	font-size: 1.2rem;
 	font-weight: 500;
 	color: rgba(0, 0, 0, 0.529);
 }
-.container-struk .body-struk .grup-detail h3{
+.container-struk .body-struk .grup-detail h3 {
 	font-size: 1.5rem;
 	font-weight: 500;
 }
-.container-struk .body-struk .metode-pembayaran{
+.container-struk .body-struk .metode-pembayaran {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: #D8F3DC;
+	background-color: #d8f3dc;
 	padding: 2rem 1.5rem;
 	border-radius: 10px;
-	
 }
-.container-struk .body-struk .garis{
+.container-struk .body-struk .garis {
 	border-top: 5px dashed rgba(0, 0, 0, 0.451);
 }
-.container-struk .body-struk .metode-pembayaran .row-metode{
+.container-struk .body-struk .metode-pembayaran .row-metode {
 	display: flex;
 	align-items: center;
 	gap: 3rem;
@@ -786,19 +871,23 @@ border-radius: 50%;
 	color: rgba(0, 0, 0, 0.451);
 	font-weight: 500;
 }
-.container-struk .body-struk .metode-pembayaran .row-metode .img-pembayaran{
+.container-struk .body-struk .metode-pembayaran .row-metode .img-pembayaran {
 	width: 90px;
 	height: 30px;
 }
-.container-struk .body-struk .metode-pembayaran .row-metode .img-pembayaran img{
+.container-struk
+	.body-struk
+	.metode-pembayaran
+	.row-metode
+	.img-pembayaran
+	img {
 	width: 100%;
 }
-.container-struk .body-struk .metode-pembayaran i{
+.container-struk .body-struk .metode-pembayaran i {
 	font-size: 1.6rem;
 	color: #409b71;
-
 }
-.cont-mybooking{
+.cont-mybooking {
 	display: flex;
 	flex-direction: column-reverse;
 	width: 100%;
@@ -806,7 +895,7 @@ border-radius: 50%;
 	align-items: center;
 	gap: 3rem;
 }
-.cont-mybooking .mybooking{
+.cont-mybooking .mybooking {
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	width: 90%;
 	padding: 1rem;
@@ -814,42 +903,50 @@ border-radius: 50%;
 	flex-direction: column;
 	border-radius: 10px;
 }
-.cont-mybooking .mybooking .header-my{
+.cont-mybooking .mybooking .header-my {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+.cont-mybooking .mybooking .header-my .new {
+	font-weight: 500;
+	color: red;
+}
+
+.cont-mybooking .mybooking .header-my {
 	padding: 1rem;
 	border-bottom: 2px solid rgba(0, 0, 0, 0.221);
 }
-.cont-mybooking .mybooking .header-my h3 i{
+.cont-mybooking .mybooking .header-my h3 i {
 	color: gold;
 }
-.cont-mybooking .mybooking .body-my{
+.cont-mybooking .mybooking .body-my {
 	display: flex;
 	width: 100%;
 	gap: 2rem;
 	padding: 1.2rem 1rem;
 	border-bottom: 3px solid rgba(0, 0, 0, 0.221);
 }
-.cont-mybooking .mybooking .body-my img{
+.cont-mybooking .mybooking .body-my img {
 	width: 100px;
 	height: 100px;
 	border-radius: 50%;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
 }
-.cont-mybooking .mybooking .body-my .column{
+.cont-mybooking .mybooking .body-my .column {
 	display: flex;
 	flex-direction: column;
-	gap: .4rem;
+	gap: 0.4rem;
 	color: black;
-
 }
-.cont-mybooking .mybooking .body-my .column h3{
+.cont-mybooking .mybooking .body-my .column h3 {
 	font-size: 1.4rem;
 	font-weight: 600;
 }
-.cont-mybooking .mybooking .body-my .column p{
+.cont-mybooking .mybooking .body-my .column p {
 	font-weight: 500;
 }
-.cont-mybooking .mybooking .footer-my{
+.cont-mybooking .mybooking .footer-my {
 	display: flex;
 	padding-top: 2rem;
 	flex-direction: column;
@@ -857,32 +954,36 @@ border-radius: 50%;
 	text-align: end;
 	gap: 1.5rem;
 }
-.cont-mybooking .mybooking .footer-my .total{
+.cont-mybooking .mybooking .footer-my .total {
 	display: flex;
 	gap: 2rem;
 	justify-content: end;
 	align-items: center;
 	padding-inline: 1rem;
 }
-.cont-mybooking .mybooking .footer-my .total p{
+.cont-mybooking .mybooking .footer-my .total p {
 	font-weight: 500;
 }
-.cont-mybooking .mybooking .footer-my .total h3{
+.cont-mybooking .mybooking .footer-my .total h3 {
 	font-size: 1.6rem;
+	color: #409b71;
+}
+.nav-mobile .nav-menu ul li a span.kecil2 {
 	color: #409b71;
 }
 .cont-mybooking .mybooking .footer-my .button {
 	display: flex;
 	justify-content: end;
-	gap: 1.7rem;
-	padding-right: 2rem;
+	gap: 0.7rem;
+	padding-right: 1.5rem;
+	flex-wrap: wrap;
 }
 .cont-mybooking .mybooking .footer-my .button a {
 	padding: 0.5rem 1rem;
 	border-radius: 10px;
 	color: white;
 	background-color: #409b71;
-	transition: all .50s ease;
+	transition: all 0.5s ease;
 }
 .cont-mybooking .mybooking .footer-my .button a:hover {
 	background-color: #103327;
@@ -890,7 +991,7 @@ border-radius: 50%;
 .cont-mybooking .mybooking .footer-my .button a:active {
 	scale: 0.8;
 }
-.header-notif{
+.header-notif {
 	display: flex;
 	width: 90%;
 	padding: 1rem;
@@ -899,13 +1000,13 @@ border-radius: 50%;
 	font-weight: 500;
 	font-size: 0.9rem;
 }
-.body-notifikasi{
+.body-notifikasi {
 	width: 90%;
 	/* padding: 1rem; */
 	display: flex;
 	flex-direction: column-reverse;
 }
-.body-notifikasi .card-notifikasi{
+.body-notifikasi .card-notifikasi {
 	border-radius: 5px;
 	display: flex;
 	gap: 2rem;
@@ -913,24 +1014,24 @@ border-radius: 50%;
 	padding: 1rem;
 	align-items: center;
 	border-bottom: 2px solid rgba(0, 0, 0, 0.396);
-	transition: all .50s ease;
+	transition: all 0.5s ease;
 }
-.body-notifikasi a.baca{
+.body-notifikasi a.baca {
 	background-color: rgb(255, 255, 255);
 }
-.body-notifikasi .card-notifikasi:hover{
+.body-notifikasi .card-notifikasi:hover {
 	background-color: rgba(0, 0, 0, 0.14);
 }
-.body-notifikasi .card-notifikasi i{
+.body-notifikasi .card-notifikasi i {
 	font-size: 2.3rem;
 	color: gold;
 }
-.body-notifikasi .card-notifikasi .text{
+.body-notifikasi .card-notifikasi .text {
 	color: black;
 	width: 100%;
 	position: relative;
 }
-.body-notifikasi .card-notifikasi .text .bulat{
+.body-notifikasi .card-notifikasi .text .bulat {
 	width: 10px;
 	height: 10px;
 	background-color: #409b71;
@@ -938,27 +1039,384 @@ border-radius: 50%;
 	position: absolute;
 	right: -10px;
 }
-.body-notifikasi .card-notifikasi .text .jam{
+.body-notifikasi .card-notifikasi .text .jam {
 	text-align: end;
-	font-size: .9rem;
+	font-size: 0.9rem;
 	font-weight: 500;
 	color: rgba(0, 0, 0, 0.508);
 }
-@keyframes muncul{
-	0%{
-		
+@keyframes muncul {
+	0% {
 		font-size: 0rem;
 	}
-	50%{
+	50% {
 		font-size: 5rem;
 	}
-	100%{
+	100% {
 		font-size: 3rem;
-
 	}
 }
+.myprofile {
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* background-color: ; */
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	border-radius: 20px;
+}
+.myprofile .head-mp {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	padding: 2rem;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	background-color: #409b71;
+	border-bottom-left-radius: 50%;
+	border-bottom-right-radius: 50%;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	margin-bottom: 60px;
+}
+.myprofile .head-mp h3 {
+	font-size: 2rem;
+	color: white;
+	font-weight: 500;
+}
+.myprofile .head-mp img {
+	width: 175px;
+	height: 175px;
+	border-radius: 50%;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.myprofile .head-mp .name {
+	font-size: 1.5rem;
+	color: white;
+	font-weight: 500;
+}
+.myprofile .head-mp .email {
+	font-size: 1.1rem;
+	color: rgba(255, 255, 255, 0.625);
+	font-weight: 500;
+}
+.myprofile .body-mp {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	margin-bottom: 100px;
+}
+.myprofile .body-mp .mp-item {
+	display: flex;
+	width: 90%;
+}
+.myprofile .body-mp .mp-item p {
+	font-size: 1.2rem;
+	font-weight: 600;
+	color: white;
+	width: 100%;
+	border-radius: 10px;
+	padding: 1.4rem;
+	background-color: #409b71a1;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.myprofile .body-mp .mp-item p i,
+.myprofile .body-mp .mp-item a i,
+.myprofile .body-mp .mp-item .edit-profile i {
+	font-size: 1.5rem;
+	margin-right: 1rem;
+	color: rgba(255, 255, 255, 0.54);
+}
+.myprofile .body-mp .mp-item a {
+	width: 100%;
+	border-radius: 10px;
+	padding: 1.4rem;
+	font-size: 1.2rem;
+	font-weight: 600;
+	color: white;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	position: relative;
+	transition: all 0.5s ease;
+}
+.myprofile .body-mp .mp-item .edit-profile {
+	background-color: rgba(255, 166, 0, 0.86);
+	width: 100%;
+	border-radius: 10px;
+	padding: 1.4rem;
+	font-size: 1.2rem;
+	font-weight: 600;
+	color: white;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	position: relative;
+	transition: all 0.5s ease;
+	cursor: pointer;
+}
 
+.myprofile .body-mp .mp-item a.red {
+	background-color: red;
+}
+.myprofile .body-mp .mp-item a.biru {
+	background-color: rgb(76, 0, 255);
+}
+.myprofile .body-mp .mp-item a.red:hover {
+	background-color: red;
+}
+.myprofile .body-mp .mp-item a.biru:hover {
+	background-color: rgb(76, 0, 255);
+}
+.myprofile .body-mp .mp-item a span i,
+.myprofile .body-mp .mp-item .edit-profile span i {
+	position: absolute;
+	right: 0;
+	color: rgba(255, 255, 255, 0.866);
+}
+.myprofile .body-mp .mp-item a:hover {
+	background-color: orange;
+}
+.pemisah {
+	width: 96%;
+	margin-block: 2rem;
+	border: 2px dashed rgba(13, 13, 13, 0.303);
+}
+.cont-edit-profile {
+	top: -900px;
+	position: fixed;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	z-index: 1004;
+	transition: all 0.5s ease;
+}
+
+.cont-edit-profile .body-edit {
+	background-color: #d8f3dc;
+	width: 45%;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	border-radius: 10px;
+}
+.cont-edit-profile .body-edit .head-edit {
+	padding: 1rem;
+	border-radius: 10px;
+	width: 100%;
+	background-color: #409b71;
+	color: white;
+}
+.cont-edit-profile .body-edit .form-edit {
+	padding: 1.9rem;
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+.cont-edit-profile .body-edit .form-edit .form-group {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+.cont-edit-profile .body-edit .form-edit .form-group label,
+.img-text {
+	font-size: 1rem;
+	color: #409b71c7;
+	font-weight: 600;
+}
+.cont-edit-profile .body-edit .form-edit .form-group input {
+	border: none;
+	outline: none;
+	padding: 0.7rem;
+	border-radius: 10px;
+	font-size: 1.2rem;
+	font-weight: 600;
+}
+.cont-edit-profile .body-edit .form-edit .form-group input.readonly {
+	background-color: rgba(255, 255, 255, 0.568);
+	color: rgba(0, 0, 0, 0.578);
+}
+.cont-edit-profile .body-edit .form-edit .form-group-image {
+	display: flex;
+	gap: 2rem;
+	align-items: center;
+}
+.cont-edit-profile .body-edit .form-edit .form-group-image img {
+	width: 150px;
+	height: 150px;
+	border-radius: 10px;
+}
+.cont-edit-profile .body-edit .form-edit .form-group-image input[type="file"] {
+	font-size: 1rem;
+	font-weight: 500;
+	width: 100%;
+}
+.cont-edit-profile
+	.body-edit
+	.form-edit
+	.form-group-image
+	input[type="file"]::file-selector-button {
+	padding: 0.8rem;
+	background-color: #409b71;
+	color: white;
+	border: none;
+	outline: none;
+	font-size: 1.1rem;
+	font-weight: 600;
+	border-radius: 10px;
+	margin-right: 10px;
+	cursor: pointer;
+}
+.cont-edit-profile .body-edit .btn-edit {
+	display: flex;
+	justify-content: end;
+	gap: 1rem;
+	align-items: center;
+}
+.cont-edit-profile .body-edit .btn-edit .edit-batal {
+	padding: 0.5rem 1.5rem;
+	background-color: red;
+	color: white;
+	border-radius: 10px;
+	cursor: pointer;
+	font-weight: 600;
+	font-size: 1rem;
+	transition: all 0.5s ease;
+}
+.cont-edit-profile .body-edit .btn-edit button[type="submit"] {
+	transition: all 0.5s ease;
+	font-size: 1rem;
+	padding: 0.7rem 1.5rem;
+}
+.cont-edit-profile .body-edit .btn-edit .edit-batal:active {
+	scale: 0.8;
+}
+.cont-edit-profile .body-edit .btn-edit button[type="submit"]:active {
+	scale: 0.8;
+}
+div.contEdit-hadir {
+	top: 20px;
+}
+.content-change {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	border-radius: 10px;
+}
+.content-change .header-change {
+	border-radius: 10px;
+	padding: 1rem;
+	background-color: #409b71;
+	color: white;
+	width: 100%;
+	text-align: center;
+}
+.content-change .body-change {
+	width: 100%;
+	padding: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 2.5rem;
+	flex-direction: column;
+}
+.content-change .body-change .form-group2 {
+	display: flex;
+	gap: 0.3rem;
+	flex-direction: column;
+	width: 100%;
+}
+.content-change .body-change .form-group2 label {
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: #409b71;
+}
+.content-change .body-change .form-group2 input[type="text"] {
+	padding: 0.7rem;
+	border: none;
+	outline: none;
+	font-size: 1rem;
+	font-weight: 600;
+	border-radius: 10px;
+	width: 100%;
+}
+small.red {
+	font-weight: 500;
+	color: red;
+}
+.form-group-password {
+	display: flex;
+	gap: 1rem;
+}
+.content-change .body-change .tombol2 {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+}
+.content-change .body-change .tombol2 a {
+	width: 100%;
+	background-color: red;
+	text-align: center;
+	padding: 0.5rem 1rem;
+	border-radius: 10px;
+	font-weight: 600;
+	font-size: 1.05rem;
+	color: white;
+}
+.content-change .body-change .tombol2 button[type="submit"] {
+	width: 100%;
+}
+.tomboll {
+	padding-top: 1rem;
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: end;
+	gap: 0.8rem;
+}
+.tomboll p {
+	font-size: 1.2rem;
+	font-weight: 500;
+	color: rgba(0, 0, 0, 0.537);
+}
+.tomboll a {
+	font-size: 1.1rem;
+	padding: 0.7rem 1rem;
+	background-color: rgb(255, 0, 0);
+	color: white;
+	font-weight: 500;
+	border-radius: 10px;
+	transition: all 0.5s ease;
+}
+.tomboll a:hover {
+	background-color: rgb(161, 0, 0);
+}
+.tomboll a:active {
+	scale: 0.8;
+}
+#jenis_lapangan{
+	border: none;
+	outline: none;
+	padding: .5rem 1.1rem;
+	font-size: 1.1rem;
+	color: #409b71;
+	font-weight: 600;
+	border-radius: 10px;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+#jenis_lapangan option{
+	padding: .5rem 1rem;
+}
 footer {
+	margin-top: 15rem;
 	padding-top: 5rem;
 	display: flex;
 	justify-content: center;
@@ -978,7 +1436,6 @@ footer .logo-footer {
 	gap: 0.5rem;
 	margin: 1rem;
 }
-
 .logo-footer a {
 	display: flex;
 	text-align: center;
@@ -995,7 +1452,6 @@ footer .logo-footer {
 	background-color: #52b788;
 	box-shadow: 3px 5px 11px -3px rgba(0, 0, 0, 0.75);
 }
-
 .venue-icon-fasilitas {
 	display: flex;
 	justify-content: center;
@@ -1021,13 +1477,11 @@ footer .logo-footer {
 .circle-fasilitas .circle-icon-fasilitas img {
 	width: 100%;
 }
-
 footer .menu ul {
 	display: flex;
 	gap: 1rem;
 	padding-bottom: 1rem;
 }
-
 footer .menu ul li a {
 	font-size: 1.1rem;
 	color: white;
@@ -1057,18 +1511,20 @@ footer .copyright {
 	main.venue {
 		padding-inline: 0;
 	}
-	.tutor h1{
+	.tutor h1 {
 		font-size: 1.4rem;
 	}
-    .header-detail-lapangan .detail-judul h1{
-        font-size: 2.1rem;
-    }
-	.container-pesanan .column-struk .row-struk p{
+	.header-detail-lapangan .detail-judul h1 {
+		font-size: 2.1rem;
+	}
+	.container-pesanan .column-struk .row-struk p {
 		font-size: 0.9rem;
 	}
-	
+	h1.kalimat {
+		font-size: 2.5rem;
+		color: rgba(255, 255, 255, 0.536);
+	}
 }
-
 @media screen and (min-width: 1101px) {
 	.nav-mobile {
 		display: none;
@@ -1128,42 +1584,50 @@ footer .copyright {
 		width: 100%;
 		height: auto;
 	}
-    .header-detail-lapangan .detail-img{
-        flex-direction: column;
-    }
-    .header-detail-lapangan .detail-img img{
-        width: 100%;
-    }
-    .header-detail-lapangan .detail-img .detail-harga{
-        width: 100%;
-        padding: 1.5rem;
-    }
+	.header-detail-lapangan .detail-img {
+		flex-direction: column;
+	}
+	.header-detail-lapangan .detail-img img {
+		width: 100%;
+	}
+	.header-detail-lapangan .detail-img .detail-harga {
+		width: 100%;
+		padding: 1.5rem;
+	}
 	.body-detail-lapangan .form-jam-booking .row-jam-booking {
 		width: 100%;
 	}
-	.row-comment-tutor{
+	.row-comment-tutor {
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 	}
-	.row-comment-tutor .container-comment{
+	.row-comment-tutor .container-comment {
 		width: 100%;
 	}
-	.row-comment-tutor .container-tutor{
+	.row-comment-tutor .container-tutor {
 		width: 100%;
 		flex-wrap: wrap;
 		flex-direction: row;
 		justify-content: center;
 		align-items: center;
 	}
-	.row-comment-tutor .container-tutor .card-tutor2{
+	.row-comment-tutor .container-tutor .card-tutor2 {
 		width: 300px;
 		height: 300px;
 	}
-	.py .struk .container-struk{
+	.py .struk .container-struk {
 		width: 100%;
 	}
-
+	.myprofile {
+		width: 100%;
+	}
+	.cont-edit-profile .body-edit {
+		width: 80%;
+	}
+	.content-change {
+		width: 80%;
+	}
 }
 @media screen and (max-width: 960px) {
 	.l-2 {
@@ -1173,62 +1637,107 @@ footer .copyright {
 		padding: 2rem;
 		width: 100%;
 	}
-	.row-comment-tutor .container-tutor .card-tutor2{
+	.row-comment-tutor .container-tutor .card-tutor2 {
 		width: 100%;
 		height: auto;
 	}
-
 }
 @media screen and (max-width: 860px) {
-	.py form .row-payment{
+	.py form .row-payment {
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 	}
-	.py form .row-payment .container-customer, .py form .row-payment .container-payment{
+	.py form .row-payment .container-customer,
+	.py form .row-payment .container-payment {
 		width: 100%;
 	}
-	
+	.myprofile .head-mp h3 {
+		font-size: 1.4rem;
+	}
+	.myprofile .head-mp img {
+		width: 130px;
+		height: 130px;
+	}
+	.myprofile .body-mp .mp-item p,
+	.myprofile .body-mp .mp-item a {
+		font-size: 1rem;
+	}
 }
 @media screen and (max-width: 550px) {
-    main.dl{
-        padding-inline: 0.5rem;
-    }
+	main.dl {
+		padding-inline: 0rem;
+	}
 	.modal-logout {
 		width: 90%;
 	}
-    .info-login{
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-    .body-detail-lapangan .form-row .form form{
-        justify-content: center;  
-    }
-    .body-detail-lapangan .form-row .form form input[type="date"]{
-        width: 100%;
-    }
-    .body-detail-lapangan .form-row .form form button[type="submit"]{
-        padding-block: 1rem;
-    }
-	.lanjut-pembayaran .tombol-lanjut-pembayaran button[type="submit"]{
+	.info-login {
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+	.body-detail-lapangan .form-row .form form {
+		justify-content: center;
+	}
+	.body-detail-lapangan .form-row .form form input[type="date"] {
+		width: 100%;
+	}
+	.body-detail-lapangan .form-row .form form button[type="submit"] {
+		padding-block: 1rem;
+	}
+	.lanjut-pembayaran .tombol-lanjut-pembayaran button[type="submit"] {
 		font-size: 1rem;
 		padding: 1rem;
 	}
-	.row-comment-tutor .container-comment .row-comment .card-comment .content-comment h3{
+	.row-comment-tutor
+		.container-comment
+		.row-comment
+		.card-comment
+		.content-comment
+		h3 {
 		font-size: 1.1rem;
 	}
-	.row-comment-tutor .container-comment .row-comment .card-comment .content-comment .comment p{
+	.row-comment-tutor
+		.container-comment
+		.row-comment
+		.card-comment
+		.content-comment
+		.comment
+		p {
 		font-size: 0.9rem;
 	}
-	.row-comment-tutor .container-comment .row-comment .card-comment .content-comment .comment span{
+	.row-comment-tutor
+		.container-comment
+		.row-comment
+		.card-comment
+		.content-comment
+		.comment
+		span {
 		font-size: 0.8rem;
 	}
-	
-	
-
+	.cont-edit-profile .body-edit {
+		width: 95%;
+	}
+	.cont-edit-profile .body-edit .form-group-image img {
+		width: 90px;
+		height: 90px;
+	}
+	.cont-edit-profile .body-edit .form-edit .form-group-image img {
+		width: 90px;
+		height: 90px;
+	}
+	.cont-edit-profile .body-edit .form-edit .btn-edit .edit-batal {
+		font-size: 0.9rem;
+	}
+	.cont-edit-profile .body-edit .form-edit .btn-edit button[type="submit"] {
+		font-size: 0.9rem;
+	}
+	.form-group-password {
+		flex-direction: column;
+		gap: 2rem;
+	}
 }
 @media screen and (max-width: 785px) {
 	header a.pt {
@@ -1256,7 +1765,6 @@ footer .copyright {
 		padding: 0.5rem;
 		width: 100%;
 	}
-
 	.menu-venue {
 		height: 100px;
 		overflow: auto;
@@ -1274,88 +1782,120 @@ footer .copyright {
 	.content-button .container-button {
 		width: 100%;
 	}
-	.cont-mybooking .mybooking{
+	.cont-mybooking .mybooking {
 		width: 100%;
 	}
-	.content-button .container-button .harga-total .p2{
+	.content-button .container-button .harga-total .p2 {
 		font-size: 1.5rem;
 	}
-	.cont-mybooking .mybooking .body-my img{
+	.cont-mybooking .mybooking .body-my img {
 		height: 80px;
 		width: 80px;
 	}
-	.cont-mybooking .mybooking .body-my .column p{
+	.cont-mybooking .mybooking .body-my .column p {
 		font-size: 0.8rem;
 	}
-	.py .header-notif{
+	.py .header-notif {
 		width: 100%;
 	}
-	div.body-notifikasi{
+	div.body-notifikasi {
 		width: 100%;
 	}
-	div.body-notifikasi .card-notifikasi .text p{
+	div.body-notifikasi .card-notifikasi .text p {
 		font-size: 0.7rem;
 		text-align: justify;
 	}
-	div.body-notifikasi .card-notifikasi .text p.jam{
-		font-size: .6rem;
-		
+	div.body-notifikasi .card-notifikasi .text p.jam {
+		font-size: 0.6rem;
+	}
+	.cont-edit-profile .body-edit .form-edit .form-group label,
+	.img-text {
+		font-size: 0.8rem;
+	}
+	.cont-edit-profile .body-edit .form-edit .form-group input {
+		font-size: 0.9rem;
+	}
+	.cont-edit-profile .body-edit .form-edit .form-group-image img {
+		width: 100px;
+		height: 100px;
+	}
+	.cont-edit-profile
+		.body-edit
+		.form-edit
+		.form-group-image
+		input[type="file"] {
+		font-size: 0.7rem;
+	}
+	.cont-edit-profile
+		.body-edit
+		.form-edit
+		.form-group-image
+		input[type="file"]::file-selector-button {
+		font-size: 0.8rem;
 	}
 }
 @media screen and (max-width: 700px) {
-	.row-img-fasilitas{
+	.row-img-fasilitas {
 		gap: 3rem;
 	}
-	.row-img-fasilitas .card-img-fasilitas{
+	.row-img-fasilitas .card-img-fasilitas {
+		width: 100%;
+	}
+	.content-change {
 		width: 100%;
 	}
 }
 @media screen and (max-width: 655px) {
-	.body-detail-lapangan .form-jam-booking .row-jam-booking .card-radio{
+	.body-detail-lapangan .form-jam-booking .row-jam-booking .card-radio {
 		width: 8.5rem;
 		height: 8.5rem;
 	}
-	.body-detail-lapangan .form-jam-booking .row-jam-booking .card-radio .body-radio label{
+	.body-detail-lapangan
+		.form-jam-booking
+		.row-jam-booking
+		.card-radio
+		.body-radio
+		label {
 		font-size: 1rem;
 	}
-	.alert-message-eror{
+	.alert-message-eror {
 		padding: 0.5rem 0.5rem;
 		font-size: 0.7rem;
 	}
-	.content-button .container-button{
+	.content-button .container-button {
 		flex-direction: row;
 		width: 100%;
 		padding-inline: 1rem;
 	}
-	.content-button .container-button button[type='submit']{
-		width: 50%;	
+	.content-button .container-button button[type="submit"] {
+		width: 50%;
 		font-size: 1rem;
 	}
-	.content-button .container-button .harga-total{
+	.content-button .container-button .harga-total {
 		flex-wrap: wrap;
 		width: 50%;
 		font-size: 1.1rem;
 		gap: 1rem;
 	}
-	.container-struk .body-struk .ket-struk .column-struk h1{
+	.container-struk .body-struk .ket-struk .column-struk h1 {
 		font-size: 1.3rem;
 	}
-	.container-struk .body-struk .grup-detail p{
-		font-size: 0.9rem;
+	.container-struk .body-struk .grup-detail p {
+		font-size: 0.8rem;
 	}
-	.container-struk .body-struk .grup-detail h3{
-		font-size: 1rem;
+	.container-struk .body-struk .grup-detail h3 {
+		font-size: 0.9rem;
 		font-weight: 500;
 	}
-	.container-struk .body-struk .metode-pembayaran .row-metode .img-pembayaran{
+	.container-struk .body-struk .metode-pembayaran .row-metode .img-pembayaran {
 		width: 50px;
 		height: 15px;
 	}
-	.container-struk .body-struk .metode-pembayaran .row-metode{
+	.container-struk .body-struk .metode-pembayaran .row-metode {
 		gap: 1rem;
 		font-size: 0.8rem;
 	}
-	.container-struk .body-struk .metode-pembayaran i{
+	.container-struk .body-struk .metode-pembayaran i {
 		font-size: 1.3rem;
 	}
 }

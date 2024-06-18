@@ -1,5 +1,5 @@
        <!-- Sidebar -->
-       <ul class="navbar-nav bg-biru sidebar sidebar-dark accordion shadow animated--fade-in" id="accordionSidebar">
+       <ul class="navbar-nav bg-biru sidebar sidebar-dark accordion shadow animated--fade-in toggled" id="accordionSidebar">
 
            <!-- Sidebar - Brand -->
            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
@@ -8,40 +8,25 @@
                </div>
                <div class="sidebar-brand-text mx-3">BCL Futsal</div>
            </a>
+           <?php 
+           $menu = $this->modelfutsal->get_where('user_sub_menu', ['menu_id' => $this->session->userdata('roll_id')]);
+           ?>
            <hr class="sidebar-divider bg-gradient-warning">
-
+           
+           <?php foreach($menu as $m): ?>
            <!-- Divider -->
-           <li class="nav-item">
-               <a class="nav-link pb-0" href="<?= base_url('dashboard') ?>">
-                   <i class="fas fa-fw fa-chart-pie text-warning"></i>
-                   <span>Dashboard</span>
+            <?php if($m['title'] == $title): ?>
+           <li class="nav-item active">
+            <?php else: ?>
+            <li class="nav-item">
+            <?php endif; ?>
+               <a class="nav-link pb-0" href="<?= base_url(). $m['url'] ?>">
+                    <i class="<?= $m['icon']?>"></i>
+                   <span><?= $m['title']; ?></span>
                </a>
            </li>
-           <li class="nav-item ">
-               <a class="nav-link pb-0" href="<?= base_url('booking') ?>">
-                   <i class="fas fa-calendar-alt fa-fw text-warning"></i>
-                   <span>Booking</span>
-               </a>
-           </li>
-           <li class="nav-item ">
-               <a class="nav-link pb-0" href="<?= base_url('transaksi') ?>">
-                   <i class="fas fa-money-bill-wave fa-fw text-warning"></i>
-                   <span>Transaksi</span>
-               </a>
-
-           </li>
-           <li class="nav-item ">
-               <a class="nav-link pb-0" href="<?= base_url('laporan/LaporanHarian') ?>">
-                   <i class="fas fa-file-invoice fa-fw text-warning"></i>
-                   <span>Laporan Harian</span>
-               </a>
-           </li>
-           <li class="nav-item ">
-               <a class="nav-link pb-0" href="<?= base_url('laporan/LaporanBulanan') ?>">
-                   <i class="fas fa-file-invoice-dollar fa-fw text-warning"></i>
-                   <span>Laporan Bulanan</span>
-               </a>
-           </li>
+           <?php endforeach; ?>
+          
 
            <li class="nav-item ">
                <a class="nav-link" href="<?= base_url('auth/logout') ?>" data-toggle="modal" data-target="#logoutModal">

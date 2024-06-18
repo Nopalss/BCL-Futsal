@@ -4,6 +4,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Dashboard extends CI_Controller{
     public function index(){    
         $data['title'] = 'Dashboard';
+        if ($this->session->userdata('roll_id') == 4 || $this->session->userdata('roll_id') == 3) {
+            redirect('auth/blocked');
+        } else {
+            $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        }
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['booking'] = $this->modelfutsal->jumlah('booking', 'id');
         $data['transaksi'] = $this->modelfutsal->jumlah('transaksi', 'nota');

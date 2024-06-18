@@ -41,7 +41,7 @@
            <div class="row-jam-booking">
             <!-- dicek jadwal booking nya ada yang booking apa enggak -->
                 <?php if($jam_booking): ?>
-                    <!-- ini perulangan buat ditaroh di $jb -->
+                   <!-- ini perulangan buat ditaroh di $jb -->
                     <?php foreach ($jam_booking as $jb) : ?>
                          <?php $jamB[] = $jb['jam_mulai'];?>
                     <?php endforeach; ?>

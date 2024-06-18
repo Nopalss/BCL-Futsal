@@ -37,9 +37,9 @@
                     </div>
                     <div class="card col-md-5 m-4 p-0 border-0 text-right text-dark">
                         <p class="font-weight-bold">Lapangan Standart</p>
-                        <p class=" "><?= $laporan['id']; ?> Pemakaian</p>
+                        <p class=" "><?= $pemakaian[0]; ?> Pemakaian</p>
                         <p class="font-weight-bold">Lapangan Sintetis</p>
-                        <p class=" "><?= $laporan['tanggal']; ?> Pemakaian</p>
+                        <p class=" "><?= $pemakaian[1]; ?> Pemakaian</p>
                     </div>
                 </div>
                 <div class="table-responsive">
@@ -58,7 +58,6 @@
                                 <h5 class="text-center">Lapangan Standar</h5>
                             </div>
                             <div class="table-responsive">
-
                                 <table class="table">
                                     <thead>
                                         <tr>
@@ -161,8 +160,8 @@
     </div>
     <div class="row justify-content-center mt-2">
         <a href="<?= base_url('laporan/laporanHarian')?>" class="btn btn-primary mr-1"><i class="fas fa-arrow-left"></i></a>
-        <a href="<?= base_url('laporan/pdflaporanHarian/'). $laporan['id']?>" class="btn btn-danger mr-1"><i class="fas fa-file-pdf"></i></a>
-        <a href="<?= base_url('laporan/excellaporanHarian/'). $laporan['id']?>" class="btn btn-success mr-1"><i class="fas fa-file-excel"></i></a>
+        <a href="<?= base_url('laporan/pdfDetailLh/'). $laporan['id']?>" class="btn btn-danger mr-1"><i class="fas fa-file-pdf"></i></a>
+        <a href="<?= base_url('laporan/DetailexcelLh/'). $laporan['id']?>" class="btn btn-success mr-1"><i class="fas fa-file-excel"></i></a>
     </div>
 </div>
 

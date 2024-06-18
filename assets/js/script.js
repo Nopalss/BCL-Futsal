@@ -23,6 +23,9 @@ const tMenuMobile = document.getElementsByClassName("user-mobile")[0];
 const infoLogin = document.getElementsByClassName("info-login")[0];
 const bgFocus = document.getElementsByClassName("bg-focus")[0];
 const lanjutPembayaran = document.getElementsByClassName("lanjut-pembayaran")[0];
+const contEdit = document.getElementsByClassName("cont-edit-profile")[0];
+const btnEditProfile = document.getElementsByClassName("edit-profile")[1];
+const btnEditbatal = document.getElementsByClassName("edit-batal")[0];
 const alertMessageError = document.getElementsByClassName("alert-message-eror")[0];
 const contentButton = document.getElementsByClassName("content-button")[0];
 const x = document.getElementById("x-logout");
@@ -50,30 +53,42 @@ const tombolRadio2 = document.querySelectorAll(".t-pay").forEach(item =>{
 	})
 });
 
-if(profile !== null){
+if(profile !== undefined && profile !== null){
 	profile.addEventListener("click", function () {
 		detail.classList.toggle("hadir");
 	});
 }
 
-if(tMenuMobile !== null){
+if(tMenuMobile !== undefined && tMenuMobile !== null){
 	tMenuMobile.addEventListener("click", function () {
 		MenuMobile.classList.add("nav-mobile-hadir");
 	});
 }
+if(btnEditProfile !== undefined && btnEditProfile !== null){
+	btnEditProfile.addEventListener("click", function () {
+		contEdit.classList.add("contEdit-hadir");
+		bgFocus.classList.add("d-hadir");
+	});
+}
+if(btnEditbatal !== undefined && btnEditbatal !== null){
+	btnEditbatal.addEventListener("click", function () {
+		contEdit.classList.remove("contEdit-hadir");
+		bgFocus.classList.remove("d-hadir");
+	});
+}
 
-if(x2 !== null){
+if(x2 !== null && x2 !== undefined){
 	x2.addEventListener("click", function () {
 		MenuMobile.classList.remove("nav-mobile-hadir");
 	});
 }
-if(xInfo !== null){
+if(xInfo !== null && xInfo !== undefined){
 	xInfo.addEventListener("click", function () {
 		infoLogin.classList.add("d-none");
 	});
 }
 
-if(MenuLapangan !== null){
+if(MenuLapangan !== null && MenuLapangan !== undefined){
 	MenuLapangan.addEventListener("click", function () {
 		venueLapangan.classList.remove("none-venue");
 		MenuLapangan.classList.add("hadir-venue-menu");
@@ -87,7 +102,7 @@ if(MenuLapangan !== null){
 	});
 }
 
-if(MenuAbout !== null){
+if(MenuAbout !== null && MenuAbout !== undefined){
 	MenuAbout.addEventListener("click", function () {
 		// ADD
 		venueAbout.classList.add("hadir-venue");
@@ -104,7 +119,7 @@ if(MenuAbout !== null){
 		MenuLapangan.classList.remove("hadir-venue-menu");
 	});
 }
-if(MenuRule !== null){
+if(MenuRule !== null && MenuRule !== undefined){
 	MenuRule.addEventListener("click", function () {
 		// ADD
 		venueRules.classList.add("hadir-venue");
@@ -121,7 +136,7 @@ if(MenuRule !== null){
 		MenuGallery.classList.remove("hadir-venue-menu");
 	});
 }
-if(MenuGallery !== null){
+if(MenuGallery !== null && MenuGallery !== undefined){
 	MenuGallery.addEventListener("click", function () {
 		// ADD
 		venueGallery.classList.add("hadir-venue");
@@ -146,14 +161,14 @@ main.addEventListener("click", function () {
 	alertMessageError.classList.add("d-none");
 });
 
-if(x !== null){
+if(x !== null && x !== undefined){
 	x.addEventListener("click", function () {
 		modalLogout.classList.remove("logout-hadir");
 		bgFocus.classList.remove("d-hadir");
 	});
 }
 
-if(logout !== null){	
+if(logout !== null && logout !== undefined){	
 	logout.addEventListener("click", function () {
 		modalLogout.classList.add("logout-hadir");
 		detail.classList.remove("hadir");
@@ -161,23 +176,22 @@ if(logout !== null){
 	});
 }
 
-if(logout2 !== null){
+if(logout2 !== null && logout2 !== undefined){
 	logout2.addEventListener("click", function () {
 		modalLogout.classList.add("logout-hadir");
 		bgFocus.classList.add("d-hadir");
 		MenuMobile.classList.remove("nav-mobile-hadir");
 	});
 }
-if(batalLogout !== null){
+if(batalLogout !== null && batalLogout !== undefined){
 	batalLogout.addEventListener("click", function () {
 		modalLogout.classList.remove("logout-hadir");
 		bgFocus.classList.remove("d-hadir");
 
 	});	
 }
-if(alertMessageError !== null){
+if(alertMessageError !== undefined && alertMessageError !== null){
 	alertMessageError.addEventListener("click", function () {
 		alertMessageError.classList.add("d-none");
 	});
 }
-

@@ -8,7 +8,11 @@
             </div>
             <div class="head-struk">
                 <h1><?=  "Rp " . number_format($pelanggan['harga'],0,',','.'); ?></h1>
+                <?php if($pelanggan['status2'] == 'Batal'): ?>
+                    <p>Rincian Pengembalian</p>
+                <?php else: ?>
                 <p>Pembayaran Behasil</p>
+                <?php endif; ?>
                 <?php   
                 date_default_timezone_set('Asia/Jakarta');
                 $pecah = date('d F Y - H:i', $pelanggan['date_tr']);
@@ -24,7 +28,7 @@
                     <i class="fas fa-futbol"></i>
                     <div class="column-struk">
                         <?php if( $pelanggan['id_lapangan'] == 1): ?>
-                            <h1>Lapangan Standar</h1>
+                            <h1>Lapangan Standart</h1>
                         <?php else: ?>
                            <h1>Lapangan Sintetis</h1>
                         <?php endif; ?>
@@ -53,15 +57,17 @@
                     <h3><?= $pelanggan['no_telepon']; ?></h3>
                 </div>
                 <div class="garis"></div>
-                <div class="metode-pembayaran">
-                    <div class="row-metode">
-                        <div class="img-pembayaran">
-                            <img src="<?= base_url('assets/img/payment/'). $pelanggan['metode'] . '.png'?>" alt="">
+                <?php if($pelanggan['status2'] == 'Batal'): ?>
+                <?php else: ?>
+                    <div class="metode-pembayaran">
+                        <div class="row-metode">
+                            <div class="img-pembayaran">
+                                <img src="<?= base_url('assets/img/payment/'). $pelanggan['metode'] . '.png'?>" alt="">
+                            </div>
                         </div>
-                        <!-- <h3><?= $pelanggan['metode'] ; ?></h3> -->
+                        <i class="fas fa-check"></i>
                     </div>
-                    <i class="fas fa-check"></i>
-                </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>

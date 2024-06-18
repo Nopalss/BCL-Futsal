@@ -27,10 +27,11 @@
           <div class="form-group">
             <label for="pendapatan"><b>Pendapatan</b></label>
             <input type="text" id="pendapatan" class="form-control" name="pendapatan" readonly >
+            <input type="hidden" class="pendapatan" class="form-control" name="pendapatan1" readonly >
           </div>
 
           <div class="form-group text-right mb-0">
-            <a href="<?= base_url('admin/laporanHarian')?>" class="btn btn-danger">Batal</a>
+            <a href="<?= base_url('laporan/laporanHarian')?>" class="btn btn-danger">Batal</a>
             <button type="submit" class="btn btn-primary">Simpan</button>
           </div>
         </form>

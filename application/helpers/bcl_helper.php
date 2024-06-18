@@ -33,6 +33,10 @@ function checked_user_login(){
     if (!$ci->session->userdata('email')){
         return "Visitor";
     }else{
-        return "Member";
+        if($ci->session->userdata('roll_id') == 2 || $ci->session->userdata('roll_id') == 1){
+            redirect('dashboard');
+        }else{
+            return "Member";
+        }
     }
 } 

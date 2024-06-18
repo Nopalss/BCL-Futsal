@@ -5,7 +5,9 @@
         if($this->session->userdata('status') == 'Member'): 
             $id = $user['id'];
             $query = "SELECT COUNT(*) AS jumlah FROM notif WHERE id_user = $id AND statuss = 'Belum'";
-            $n = $this->db->query($query)->row_array();            
+            $n = $this->db->query($query)->row_array();  
+            // var_dump($n);
+            // var_dump(intval($n));
             ?>
         <?php endif; ?>
         <ul>
@@ -14,6 +16,16 @@
                 <a href="<?= base_url(). $m['url']?>"><?= $m['title']; ?></a>
             </li>
             <?php endforeach; ?>
+            <?php  if($this->session->userdata('status') == 'Member'):  ?>
+            <li>
+                <a href="<?= base_url('home/notifikasi')?>">
+                    <i class="fas fa-bell"></i>
+                    <?php if(intval($n['jumlah']) > 0): ?>
+                        <span class="kecil"><?= $n['jumlah']?></span>
+                    <?php endif; ?>
+                </a>
+            </li>
+            <?php endif; ?>
             <li>
                 <!-- <a href="" class="login">Login <i class="logo fas fa-user-circle"></i> </a> -->
                 <?php if($this->session->userdata('status') == 'Visitor'): ?>
@@ -55,7 +67,7 @@
             <div class="garis"></div>
             <div class="profile-menu">
                 <ul>
-                    <li><a href="">Edit Profile</a></li>
+                    <li><a href="<?= base_url('akun/myprofile')?>">My Profile</a></li>
                     <li><div id="logout">Logout</div></li>
                 </ul>
             </div>
@@ -84,7 +96,7 @@
         </div>
         <div class="n-j">
             <?php if($this->session->userdata('status') == 'Member'): ?>
-                <h1><?= $user['name']; ?> <sup><span class="edit-profile"><i class="fas fa-edit"></i></span></sup></h1>
+                <h1><?= $user['name']; ?> <sup><span class="edit-profile"><a href="<?= base_url('akun/myprofile')?>"><i class="fas fa-cog"></i></a></span></sup></h1>
                 <p><?= $this->session->userdata('status'); ?></p>
                 
             <?php else: ?>
@@ -103,6 +115,10 @@
             <li><a href="<?= base_url(). $m['url']?>"><i class="<?= $m['icon']?>"></i><?= $m['title']; ?></a></li>
             <?php endforeach; ?>
             <?php if($this->session->userdata('status') == 'Member'): ?>
+                <li><a href="<?= base_url('home/notifikasi')?>"><i class="fas fa-bell"></i>Notifikasi
+                <?php if(intval($n['jumlah']) > 0): ?>
+                        <span class="kecil2"><?= $n['jumlah']?></span>
+                    <?php endif; ?></a></li>
                 <li><div class="logout" id="logout-2"><i class="fas fa-sign-out-alt"></i>Logout</div></li>
             <?php endif; ?>
         </ul>

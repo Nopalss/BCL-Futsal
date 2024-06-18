@@ -9,7 +9,7 @@
       
       <div class="card-body">
         <?= $this->session->flashdata('message'); ?>
-        <form action="<?= base_url('booking/edit') ?> " method="post">
+        <form action="<?= base_url('booking/editTanggal/'). $booking['id'] ?> " method="post">
           <div class="form-group">
             <label for="tanggal"><b>Tanggal</b></label>
             <input type="date" id="tanggal" class="form-control" name="tanggal" value="<?= $booking['tanggal']?>">

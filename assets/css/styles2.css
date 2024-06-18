@@ -68,8 +68,12 @@ main.main {
 	border-radius: 20px;
 	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 	display: flex;
-	
 	flex-direction: column;
+	transition: all .50s ease;
+}
+.venues-lapangan .card-lapangan:hover {
+	scale: 1.03;
+
 }
 .body-venue .venues-lapangan .card-lapangan .card-img-lp {
 	width: 100%;

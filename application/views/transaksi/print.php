@@ -58,7 +58,7 @@
                     <th >Status</th>
                     <th></th>
                     <td>
-                        Lunas <i class="far fa-check-circle"></i>
+                        <?= $transaksi['status2'] ?> <i class="far fa-check-circle"></i>
                     </td>
                 </tr>
                 <tr  class="s">

@@ -5,8 +5,12 @@ class Auth extends CI_Controller{
     
     public function index(){
 
-        if ($this->session->userdata('email')){
-            redirect('user');
+        if ($this->session->userdata('roll_id') == 1 || $this->session->userdata('roll_id') == 2 ) {
+            redirect('dashboard');
+        }elseif($this->session->userdata('roll_id') == 3){
+            redirect('home');
+        }else {
+
         }
         // membuat rules
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
@@ -71,13 +75,16 @@ class Auth extends CI_Controller{
 
     public function registration(){
         // ini buat cek jika email masih nyangkut maka dibalikan ke tampilan user
-        // if ($this->session->userdata('emsil')){
-        //     redirect('user');
-        // }
-
+        if ($this->session->userdata('roll_id') == 1 || $this->session->userdata('roll_id') == 2 ) {
+            redirect('dashboard');
+        }elseif($this->session->userdata('roll_id') == 3){
+            redirect('home');
+        }else {
+            
+        }
         // menetapkan aturan 
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]');
         $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [ 
             // mengeset pesan kesalahan
             'required' => 'Password required!',
@@ -95,11 +102,12 @@ class Auth extends CI_Controller{
         } else{
             $data = [
                 //data disiapkan
+                'id' => $this->modelfutsal->auto_idAkun(),
                 'name' => htmlspecialchars($this->input->post('name', true)),
                 'email' => htmlspecialchars($this->input->post('email', true)),
-                'image' => 'default.jpg',
+                'image' => 'default.png',
                 'password' => password_hash($this->input->post('password1'),PASSWORD_DEFAULT),
-                'roll_id' => 2,
+                'roll_id' => 3,
                 'is_active' => 1,
                 'date_created' => time()
             ];
@@ -111,42 +119,56 @@ class Auth extends CI_Controller{
             redirect('auth');
         }
     }
-    // private function _sendEmail(){
-    //     $config = [
-    //         'protocol' => 'smtp',
-    //         'smtp_host' => 'ssl://smtp.googlemail.com',
-    //         'smtp_user' => 'bakoelpisang@mail.com',
-    //         'smtp_pass' => 'Bakoel123',
-    //         'smtp_port' =>  465,
-    //         'mailtype'  => 'html',
-    //         'charset'   => 'utf-8',
-    //         'newline'   => "\r\n",
-    //     ];
+    public function forgotPassword(){
+        if ($this->session->userdata('roll_id') == 1 || $this->session->userdata('roll_id') == 2 ) {
+            redirect('dashboard');
+        }elseif($this->session->userdata('roll_id') == 3){
+            redirect('home');
+        }else {
+            
+        }
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [ 
+            // mengeset pesan kesalahan
+            'required' => 'Password required!',
+            'matches' => 'Password dont Match!',
+            'min_length' => 'Password too short!'
+            ]);
+            $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
+            // $this->form_validation->set_rules('check', 'Check', 'required');
+        if($this->form_validation->run() == false){ 
+            $data['title'] = 'Forgot Password';
+            $this->load->view('templates/auth_header', $data);
+            $this->load->view('auth/forgot' );
+            $this->load->view('templates/auth_footer');
+        }else{
+            $email = htmlspecialchars($this->input->post('email', true));
+            if($this->modelfutsal->getById('user', ['email' => $email] )){
+                $password = password_hash($this->input->post('password1'),PASSWORD_DEFAULT);
+                $this->db->set('password', $password);
+                $this->db->where('email', $email);
+                $this->db->update('user');
+                $this->session->set_flashdata('message', '<div class="alert alert-success alert-message" role="alert">Password Changed!</div>');
+                redirect('auth');
+            }else{
+                $this->session->set_flashdata('message', '<div class="alert alert-danger alert-message" role="alert">Email is not registered!</div>');
+                redirect('auth/forgotPassword');
+            }
+        }
 
-    //     $this->load->library('email',$config);  
-    //     $this->email->initialize($config);
-
-    //     $this->email->from('bakoelpisang@gmail.com', 'BCL Futsal');
-    //     $this->email->to('muhammadnaufalsaputra06@gmail.com');
-    //     $this->email->subject('Testing');
-    //     $this->email->message('halo bang');
-    //     if($this->email->send()){
-    //         return true;
-    //     }else{
-    //         echo $this->email->print_debugger();
-    //         die;
-    //     }
-
-    // }
+    }
 
     public function logout(){
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('roll_id');
         $this->session->unset_userdata('status');
-        // $status = [
-        //     'status' => checked_user_login()
-        // ];
-        // $this->session->set_userdata($status);
         redirect('home');
+    }
+    
+    public function blocked(){
+        $data['title'] = '404 Not Found'; 
+        $this->load->view('templates/auth_header', $data);
+        $this->load->view('auth/blocked');
+        $this->load->view('templates/auth_footer');
     }
 }

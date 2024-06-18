@@ -10,7 +10,60 @@ class Coba extends CI_Controller{
         // ];
         // $this->session->set_userdata($nama);
     }
-    public function index($tanggal = 'Y-m-d'){
+    public function index(){
+        date_default_timezone_set('Asia/Jakarta');
+        // $status = 'Sukses';
+        // $query = "SELECT * FROM booking WHERE tanggal = '2024-06-15' AND id_lapangan = 1 AND status2 = '$status' ";
+        // var_dump($this->db->query($query)->result_array());
+        // echo "2024-06-15" < "2024-10-06";
+        // $i = 1;
+        // $i2 = 341;
+        // $lapang1 = 1;
+        // $lapang2 = 2;
+        // $j1 = 12;
+        // $j2 = 13;
+        // while($i2<346){
+        //     $j1 = $j1 + $i;
+        //     $j2 = $j1 + $i;
+        //     echo "('BK240201".$i2."', 'P0".$i2."', '".$lapang1."', '2024-06-10', '". $j1.":00 - ". $j2 .":00', 'Lunas', '100000', 'Sukses'),". "<br>";
+        //     $i2+= 1;
+        // }
+        $i = 1;
+        while( $i<10){
+            echo "('LH24060".$i."', '2024-06-0".$i."', 1100000),". "<br>";
+            $i += 1;
+        }
+
+        while( $i<17){
+            echo "('LH2406".$i."', '2024-06-".$i."', 1100000),". "<br>";
+            $i += 1;
+        }
+        // 
+
+        // $js = date('H'); // ngambil jam sekarang
+        // $tanggal = "2024-06-14";
+        // $pecah = explode('-', $tanggal); // pecah tanggal
+        // // menyamakan tanggal sekarang,   
+        // $jam= "09:00 - 10:00";
+        // if($pecah[0] == date('Y') && $pecah[1] == date('m') && $pecah[2] == date('d')){
+        //     // jika sama maka jam yang ingin di booking user dibandingkan terlebih dahulu  
+        //     $pecah = explode('-', $jam);
+        //     // var_dump($pecah);
+          
+        //     $pecah = explode(':', $pecah[0]);
+        //     var_dump(intval($pecah[0]) );
+        //     $jb = $pecah[0];
+        //     // jika jam yang ingin di booking sudah lewat maka mengembalikan false
+        //     if(intval($js) == intval($pecah[0]) || intval($js) > intval($pecah[0])){
+        //         echo 1;
+        //         return false;
+        //     }else{// jika tidak true
+        //         echo 0;
+        //         return true;
+        //     }
+        // }else{ // jika tanggal tidak sama dengan tanggal sekarang maka mengembalikan true
+        //     return true;
+        // }
         // if($tanggal !== NULL){
         //     echo date($tanggal);
         // }
@@ -47,22 +100,22 @@ class Coba extends CI_Controller{
         //         echo $cut2[2];
         //         echo "<br>";
         //         var_dump($pendapatan);
-        $tanggal = "2024-10-06";
-        $pecah = explode('-', $tanggal);
-        echo(date('d'));
-        echo '0' > '02';
-        if($pecah[1] == date('m') && $pecah[2] >= date('d')){
-            $data['tanggal'] = $tanggal;
-            echo "bener";
-            echo "<br>";
-        }elseif($pecah[1] >= date('m')){
-            echo "lanjut";
-            $data['tanggal'] = $tanggal;
-        }else{
-            echo "salah";
-            $this->session->set_flashdata('message', '<div class="alert alert-message alert-danger" role="alert"><i class="fas fa-info-circle"></i> Tanggal Tidak Boleh Kurang Dengan Tanggal Sekarang !</div>');
-            redirect('booking/jadwalBooking');
-        }
+        // $tanggal = "2024-10-06";
+        // $pecah = explode('-', $tanggal);
+        // echo(date('d'));
+        // echo '0' > '02';
+        // if($pecah[1] == date('m') && $pecah[2] >= date('d')){
+        //     $data['tanggal'] = $tanggal;
+        //     echo "bener";
+        //     echo "<br>";
+        // }elseif($pecah[1] >= date('m')){
+        //     echo "lanjut";
+        //     $data['tanggal'] = $tanggal;
+        // }else{
+        //     echo "salah";
+        //     $this->session->set_flashdata('message', '<div class="alert alert-message alert-danger" role="alert"><i class="fas fa-info-circle"></i> Tanggal Tidak Boleh Kurang Dengan Tanggal Sekarang !</div>');
+        //     redirect('booking/jadwalBooking');
+        // }
         //   $this->session->set_flashdata('message', '<div class="alert alert-message alert-danger" role="alert"><i class="fas fa-info-circle"></i> Tanggal Tidak Boleh Kurang Dengan Tanggal Sekarang !</div>');
         //         redirect('booking/jadwalBooking');
         // echo date('r');
